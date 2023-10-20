@@ -1,0 +1,312 @@
+@font-face {
+  font-family: 'Modern Gothic';
+  src: url(../fonts/moderngothic-bold-webfont.woff2) format('woff2'),
+    url(../fonts/moderngothic-bold-webfont.woff) format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Modern Gothic';
+  src: url(../fonts/moderngothic-bolditalic-webfont.woff2) format('woff2'),
+    url(../fonts/moderngothic-bolditalic-webfont.woff) format('woff');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Modern Gothic';
+  src: url(../fonts/moderngothic-regular-webfont.woff2) format('woff2'),
+    url(../fonts/moderngothic-regular-webfont.woff) format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Modern Gothic';
+  src: url(../fonts/moderngothic-regularitalic-webfont.woff2) format('woff2'),
+    url(../fonts/moderngothic-regularitalic-webfont.woff) format('woff');
+  font-weight: 400;
+  font-style: italic;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --font-primary: 'adobe-garamond-pro', serif;
+  --font-secondary: 'Modern Gothic', sans-serif;
+  --font-xxlg-resp: clamp(36px, calc(1rem + 8.5vw), 300px);
+  --font-xlg-resp: clamp(36px, calc(1rem + 5.5vw), 300px);
+  --font-lg-resp: clamp(36px, calc(1rem + 2.5vw), 100px);
+  --font-md-resp: calc(1rem + 1vw);
+  --font-sm-resp: clamp(8px, calc(0.75rem + 0.5vw), 18px);
+  --font-xs-resp: clamp(8px, calc(0.5rem + 0.25vw), 16px);
+  --spacing-lg: 4rem;
+  --spacing-md: 2rem;
+  --spacing-sm: 1rem;
+  --spacing-xs: 0.5rem;
+  --less-opacity: 0.5;
+  --fast-transition: 400ms;
+  --md-transition: 700ms;
+  --slow-transition: 1.2s;
+  --primary-weight: 300;
+  --thin-weight: 100;
+  --primary-line-height: 1.25;
+  --body-max-width: clamp(590px, 50%, 1480px);
+  --lofty-line-height: 1.35;
+  --primary-margin: 3vw;
+}
+
+html {
+  font-size: 18px;
+  font-family: var(--font-primary);
+  font-weight: var(--primary-weight);
+  overflow-x: hidden;
+  width: 100vw;
+}
+
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 16px;
+  }
+
+  :root {
+    --body-max-width: 100%;
+  }
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+  transition: all var(--fast-transition);
+}
+
+button:hover {
+  opacity: var(--less-opacity);
+  transition: all var(--fast-transition);
+}
+
+a {
+  font-family: inherit;
+  text-decoration: none;
+  color: inherit;
+  transition: all var(--fast-transition);
+}
+
+a:hover {
+  opacity: var(--less-opacity);
+  transition: all var(--fast-transition);
+}
+
+.faded {
+  opacity: var(--less-opacity);
+}
+
+h2 {
+  font-weight: var(--thin-weight);
+  font-size: var(--font-md-resp);
+  margin-bottom: var(--spacing-md);
+}
+
+p {
+  font-size: var(--font-sm-resp);
+}
+
+.normal-margin {
+  margin: var(--primary-margin);
+}
+
+/*
+==========
+Case Study
+==========
+*/
+
+.header-image,
+.text-header,
+.header-image-with-text {
+  margin-bottom: var(--spacing-lg);
+}
+
+.text-header {
+  padding: 3vw;
+  text-align: center;
+}
+
+.text-header h1 {
+  font-size: var(--font-xxlg-resp);
+  font-weight: 400;
+}
+
+.text-header p,
+.header-image-with-text-text p {
+  font-family: var(--font-secondary);
+  text-transform: uppercase;
+  margin-top: var(--spacing-md);
+}
+
+.header-image-with-text {
+  display: flex;
+  align-items: center;
+}
+
+.header-image-with-text-image {
+  width: 50%;
+}
+
+.header-image-with-text-text {
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+}
+
+.header-image-with-text-text h1 {
+  font-weight: 400;
+  font-size: var(--font-xlg-resp);
+}
+
+.header-image-caption {
+  opacity: var(--less-opacity);
+  font-family: var(--font-secondary);
+  margin-left: var(--primary-margin);
+  margin-top: 8px;
+  font-size: var(--font-sm-resp);
+}
+
+.case-study-body {
+  position: relative;
+}
+
+.case-study-left {
+  position: absolute;
+  left: var(--primary-margin);
+  top: var(--spacing-lg);
+}
+
+.case-study-left div {
+  margin-bottom: var(--spacing-md);
+}
+
+.module-text-container,
+.audio-module-container {
+  width: var(--body-max-width);
+  margin: 0 auto;
+}
+
+.module-text-container h1 {
+  text-align: center;
+  font-weight: 400;
+  font-size: var(--font-lg-resp);
+  margin-bottom: var(--spacing-lg);
+}
+
+.audio-module-container {
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.module-text-container p {
+  margin-bottom: var(--spacing-sm);
+}
+
+.audio-module-container p {
+  font-family: var(--font-secondary);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.audio-description {
+  font-size: var(--font-xs-resp);
+}
+
+.audio-player {
+  width: 100%;
+}
+
+.rhap_container {
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.rhap_time {
+  color: #000;
+}
+
+.rhap_current-time {
+  display: none;
+}
+
+.rhap_additional-controls,
+.rhap_volume-controls {
+  display: none;
+}
+
+.rhap_controls-section {
+  flex: none;
+}
+
+.rhap_main-controls-button {
+  color: #000;
+}
+
+.rhap_progress-bar {
+  height: 1px;
+  background-color: #000;
+}
+
+.rhap_progress-indicator {
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  top: -4px;
+  background: #000;
+  border-radius: 50px;
+  box-shadow: none;
+}
+
+.rhap_play-pause-button {
+  font-size: 60px;
+  width: 60px;
+  height: 60px;
+}
+
+.rhap_progress-container {
+  margin: 0 calc(10px + 1%) 0 0;
+}
+
+.rhap_horizontal-reverse .rhap_controls-section {
+  margin-right: 4px;
+}
+
+.image-module-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 3vw;
+}
+
+.image-module-1 {
+  width: 100%;
+}
+
+.image-module-2 {
+  width: 48%;
+}
+
+.image-module-3 {
+  width: 31%;
+}
+
+.image-module-4 {
+  width: 23%;
+}
