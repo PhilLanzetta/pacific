@@ -4,14 +4,8 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import Content from '../components/content'
 
 const CaseStudy = ({ data }) => {
-  const {
-    client,
-    year,
-    location,
-    headerImage,
-    content,
-    headerText,
-  } = data.contentfulCaseStudy
+  const { client, year, location, headerImage, content, headerText } =
+    data.contentfulCaseStudy
   return (
     <div className='case-study-page'>
       {headerImage && !headerText && (
@@ -114,6 +108,12 @@ export const query = graphql`
               html
             }
           }
+        }
+        ... on ContentfulVideoModule {
+          videoId: id
+          videoLink
+          fullBleed
+          title
         }
         ... on ContentfulImageModule {
           imageId: id
