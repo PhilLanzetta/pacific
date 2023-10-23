@@ -127,6 +127,36 @@ p {
 
 /*
 ==========
+Header
+==========
+*/
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 20px 3vw;
+}
+
+header div {
+  width: 33%;
+}
+
+.header-logo {
+  text-align: center;
+  font-size: var(--font-lg-resp);
+}
+
+.header-menu {
+  text-align: right;
+  font-family: var(--font-secondary);
+}
+
+/*
+==========
 Case Study
 ==========
 */
