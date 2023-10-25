@@ -15,7 +15,7 @@ const Header = () => {
         </button>
         <div className={`secondary-menu ${isOpen ? 'menu-show' : 'menu-hide'}`}>
           <div className='secondary-main'>
-            <Link to='#'>Projects</Link>
+            <Link to='/projects'>Projects</Link>
             <Link to='#'>Publications</Link>
             <Link to='#'>Editorial</Link>
             <Link to='#'>Shop</Link>
