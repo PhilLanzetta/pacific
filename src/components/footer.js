@@ -1,6 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Link } from 'gatsby'
+import { AiOutlineClose } from 'react-icons/ai'
+import MailchimpSubscribe from 'react-mailchimp-subscribe'
+import CustomForm from './customForm'
+
+const postUrl = process.env.GATSBY_MAIL_KEY
 
 const Footer = () => {
+  const [emailOpen, setEmailOpen] = useState(false)
+
   return (
     <footer>
       <div className='footer-link-container'>
@@ -24,7 +32,7 @@ const Footer = () => {
           </p>
           <p>@pacific_pacific</p>
         </a>
-        <button>
+        <button onClick={() => setEmailOpen(true)}>
           <p>
             <em>Newsletter</em>
           </p>
@@ -52,6 +60,35 @@ const Footer = () => {
         </a>
       </div>
       <p className='footer-logo'>Pacific</p>
+      <div className='bottom-footer'>
+        &copy; Pacific {new Date().getFullYear()}
+        <Link to='/privacy'>Privacy</Link>
+        <Link to='/shipping'>Shipping</Link>
+      </div>
+      <div
+        className={`email-pop-up ${
+          emailOpen ? 'email-pop-up-show' : ''
+        }`}
+      >
+        <div className='email-pop-up-container'>
+          <button className='email-pop-up-close'>
+            <AiOutlineClose
+              onClick={() => setEmailOpen(false)}
+            ></AiOutlineClose>
+          </button>
+          <MailchimpSubscribe
+            url={postUrl}
+            render={({ subscribe, status, message }) => (
+              <CustomForm
+                status={status}
+                message={message}
+                onValidated={(formData) => subscribe(formData)}
+                setEmailOpen={setEmailOpen}
+              ></CustomForm>
+            )}
+          />
+        </div>
+      </div>
     </footer>
   )
 }
