@@ -1,12 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Layout from '../components/layout'
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 const Projects = ({ data }) => {
-  const projects = data.allContentfulCaseStudy.nodes
+  const allProjects = data.allContentfulCaseStudy.nodes
+  const disciplineTags = data.allContentfulTag.nodes.filter((node) =>
+    node.name.includes('Discipline')
+  )
+  const [projects, setProjects] = useState(allProjects)
+  const [filterCat, setFilterCat] = useState('D')
   return (
     <Layout>
+      <div className='filter-container'>
+        <div className='filter-categories'>
+          Filter by: <button>Discipline</button> / <button>Industry</button> /{' '}
+          <button>Topic</button>
+        </div>
+        {filterCat === 'D' && (
+          <div className='tag-container'>
+            Tags:{' '}
+            {disciplineTags.map((tag) => {
+              const discipline = tag.name.split(': ')[1]
+              return <button>{discipline}</button>
+            })}
+          </div>
+        )}
+      </div>
       <div className='projects-container'>
         {projects.map((project) => (
           <Link
@@ -45,6 +65,16 @@ export const query = graphql`
         slug
         subtitle
         title
+        metadata {
+          tags {
+            name
+          }
+        }
+      }
+    }
+    allContentfulTag(sort: { name: ASC }) {
+      nodes {
+        name
       }
     }
   }

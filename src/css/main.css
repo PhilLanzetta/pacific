@@ -532,7 +532,6 @@ Case Study
 }
 
 .projects-container {
-  margin-top: 100px;
   border-top: 1px solid #000;
   padding: 3vw;
   display: flex;
@@ -542,6 +541,20 @@ Case Study
 
 .project-tile {
   width: calc(50% - 1.5vw);
+}
+
+.filter-container {
+  padding-top: 100px;
+  padding-left: 3vw;
+}
+
+.filter-categories {
+  font-family: var(--font-secondary);
+}
+
+.tag-container {
+  display: flex;
+  gap: var(--spacing-sm);
 }
 
 /*
