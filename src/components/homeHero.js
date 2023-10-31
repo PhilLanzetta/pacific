@@ -10,8 +10,8 @@ const HomeHero = () => {
       }
     }
   `)
-  const [width, setWidth] = useState(0)
-  const [height, setHeight] = useState(0)
+  const [width, setWidth] = useState('100vw')
+  const [height, setHeight] = useState('100vh')
   const [videoPlay, setVideoPlay] = useState(false)
 
   useEffect(() => {
