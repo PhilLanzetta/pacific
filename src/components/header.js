@@ -19,7 +19,7 @@ const Header = () => {
             <Link to='#'>Publications</Link>
             <Link to='#'>Editorial</Link>
             <Link to='#'>Shop</Link>
-            <Link to='#'>News</Link>
+            <Link to='/news'>News</Link>
             <Link to='#'>About</Link>
           </div>
           <div className='secondary-sub'>
