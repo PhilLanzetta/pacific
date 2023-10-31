@@ -15,6 +15,7 @@ const CaseStudy = ({ data }) => {
             <GatsbyImage
               image={headerImage.image.gatsbyImageData}
               alt={headerImage.image.description}
+              className='header-image-image'
             ></GatsbyImage>
             <p className='header-image-caption'>{headerImage.caption}</p>
           </div>

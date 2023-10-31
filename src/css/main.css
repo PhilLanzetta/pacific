@@ -321,6 +321,17 @@ Case Study
   margin-bottom: var(--spacing-lg);
 }
 
+.header-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.header-image-image {
+  min-width: 100%;
+  min-height: 100%;
+}
+
 .text-header {
   padding: 3vw;
   text-align: center;
