@@ -10,8 +10,8 @@ const ImageModule = ({ content }) => {
     >
       {content.images.map((image) => (
         <GatsbyImage
-          image={image.image.gatsbyImageData}
-          alt={image.image.description}
+          image={image.image?.gatsbyImageData}
+          alt={image.image?.description}
           className={`image-module-${content.columns}`}
         ></GatsbyImage>
       ))}
