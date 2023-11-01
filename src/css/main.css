@@ -860,3 +860,133 @@ News
   align-items: center;
   text-align: center;
 }
+
+/*
+=============== 
+About
+===============
+*/
+
+.about-page {
+  padding-top: 100px;
+  width: clamp(200px, 75%, 1200px);
+  margin: 0 auto;
+}
+
+.about-above-the-fold {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(95vh - 100px);
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: var(--spacing-md);
+}
+
+.about-above-the-fold p {
+  font-size: var(--font-md-resp);
+  text-align: center;
+}
+
+.about-section-title {
+  font-size: var(--font-sm-resp);
+  font-weight: normal;
+  margin-bottom: var(--spacing-sm);
+}
+
+.about-studio-section-title {
+  font-size: var(--font-sm-resp);
+  font-weight: normal;
+  margin-bottom: var(--spacing-sm);
+  font-style: italic;
+}
+
+.about-section {
+  margin-bottom: var(--spacing-lg);
+}
+
+.about-text p {
+  font-size: calc(var(--spacing-sm) + 6px);
+  margin-bottom: var(--spacing-sm);
+}
+
+.about-text {
+  margin-bottom: var(--spacing-lg);
+}
+
+.about-services {
+  display: flex;
+  gap: var(--spacing-sm);
+  width: 100%;
+  margin-bottom: var(--spacing-lg);
+}
+
+.about-service-column {
+  width: calc(25% - (var(--spacing-sm) / 3));
+}
+
+.about-service-title {
+  font-size: var(--font-sm-resp);
+  font-weight: normal;
+  font-style: italic;
+  margin-bottom: var(--spacing-xs);
+}
+
+.about-service-list {
+  list-style: none;
+  line-height: var(--lofty-line-height);
+}
+
+.four-column-container {
+  list-style: none;
+  column-count: 4;
+  column-fill: balance;
+  gap: var(--spacing-sm);
+  line-height: var(--lofty-line-height);
+}
+
+.founders-container {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.founder {
+  width: calc(50% - (var(--spacing-sm) / 2));
+}
+
+.founder-bio h3 {
+  font-weight: normal;
+  padding: var(--spacing-md) 0;
+  font-size: var(--font-md-resp);
+}
+
+.collections-preface {
+  width: calc(25% - (var(--spacing-sm) / 2));
+  font-style: italic;
+  padding-right: var(--spacing-sm);
+}
+
+.collections-container {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.collections-list {
+  list-style: none;
+  column-count: 3;
+  gap: var(--spacing-sm);
+  width: 75%;
+}
+
+.about-award {
+  font-style: italic;
+}
+
+.talks-lectures p {
+  margin-bottom: var(--spacing-md);
+}
+
+.press-link {
+  display: flex;
+  gap: var(--spacing-xs);
+  font-style: italic;
+}
