@@ -5,9 +5,13 @@ import Layout from '../components/layout'
 import HomeHero from '../components/homeHero'
 import { BsArrowRight } from 'react-icons/bs'
 import FeaturedTile from '../components/featuredTile'
+import Carousel from '../components/carousel'
 
 const Index = ({ data }) => {
   const featuredProjects = data.contentfulHomePage.featuredProjects
+  const featuredPublications = data.contentfulHomePage.featuredPublications
+  const featuredEditorial = data.contentfulHomePage.featuredEditorial
+  const featuredNews = data.contentfulHomePage.featuredNews
   return (
     <Layout>
       <HomeHero></HomeHero>
@@ -34,12 +38,39 @@ const Index = ({ data }) => {
         <h2>Featured Projects</h2>
         <div className='featured-tile-container'>
           {featuredProjects.map((project) => (
-            <FeaturedTile project={project}></FeaturedTile>
+            <FeaturedTile key={project.id} project={project}></FeaturedTile>
           ))}
         </div>
       </div>
       <div className='featured-container'>
         <h2>Publications</h2>
+        <Carousel data={featuredPublications} slideCount={2.75}></Carousel>
+      </div>
+      <div className='featured-container'>
+        <h2>Editorial</h2>
+        <div className='featured-tile-container'>
+          {featuredEditorial.map((project) => (
+            <FeaturedTile key={project.id} project={project}></FeaturedTile>
+          ))}
+        </div>
+      </div>
+      <div className='featured-container'>
+        <h2>News</h2>
+        <div className='featured-news-container'>
+          {featuredNews.map((news) => (
+            <Link to='/news' key={news.id} className='featured-news-link'>
+              <p>{news.newsTitle}</p>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: news.newsHeadline.childMarkdownRemark.html,
+                }}
+              ></div>
+              <div className='learn-more-link'>
+                <BsArrowRight></BsArrowRight> Read More
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </Layout>
   )
@@ -55,6 +86,7 @@ export const query = graphql`
         }
       }
       featuredProjects {
+        id
         caseStudy {
           title
           subtitle
@@ -67,6 +99,42 @@ export const query = graphql`
           }
         }
         width
+      }
+      featuredPublications {
+        id
+        headerImage {
+          image {
+            gatsbyImageData
+            description
+          }
+        }
+        slug
+        subtitle
+        title
+      }
+      featuredEditorial {
+        id
+        caseStudy {
+          title
+          subtitle
+          slug
+          tileImage {
+            image {
+              gatsbyImageData
+              description
+            }
+          }
+        }
+        width
+      }
+      featuredNews {
+        id
+        newsTitle
+        newsHeadline {
+          childMarkdownRemark {
+            html
+          }
+        }
       }
     }
   }

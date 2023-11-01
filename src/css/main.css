@@ -834,3 +834,29 @@ News
   align-items: center;
   padding-top: var(--spacing-xs);
 }
+
+.carousel-image {
+  aspect-ratio: 1.5 / 2;
+  margin-bottom: var(--spacing-xs);
+}
+
+.carousel-link {
+  padding-right: var(--spacing-sm);
+}
+
+.carousel-title {
+  font-style: italic;
+}
+
+.featured-news-container {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.featured-news-link {
+  width: calc(33% - (var(--spacing-sm) / 2));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
