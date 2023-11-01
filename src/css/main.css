@@ -550,11 +550,28 @@ Case Study
 
 .filter-categories {
   font-family: var(--font-secondary);
+  display: flex;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-xs);
+}
+
+.filter-categories-buttons {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.filter-category-active {
+  color: #000;
 }
 
 .tag-container {
   display: flex;
   gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.active-filter-button {
+  font-style: italic;
+  text-decoration: underline;
 }
 
 /*
