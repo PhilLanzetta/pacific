@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import Content from '../components/content'
 import Layout from '../components/layout'
+import Seo from '../components/seo'
 
 const CaseStudy = ({ data }) => {
   const { client, year, location, headerImage, content, headerText } =
@@ -82,6 +83,7 @@ const CaseStudy = ({ data }) => {
 export const query = graphql`
   query getSingleCaseStudy($slug: String) {
     contentfulCaseStudy(slug: { eq: $slug }) {
+      title
       year
       location
       client
@@ -136,5 +138,7 @@ export const query = graphql`
     }
   }
 `
+
+export const Head = ({ data }) => <Seo title={data.contentfulCaseStudy.title} />
 
 export default CaseStudy

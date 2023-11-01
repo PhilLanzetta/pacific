@@ -3,6 +3,7 @@ import Layout from '../components/layout'
 import { Link, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { BsArrowRight } from 'react-icons/bs'
+import Seo from '../components/seo'
 
 const About = ({ data }) => {
   const {
@@ -226,5 +227,6 @@ export const query = graphql`
     }
   }
 `
+export const Head = () => <Seo title='About' />
 
 export default About

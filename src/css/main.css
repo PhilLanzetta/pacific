@@ -809,7 +809,8 @@ News
 }
 
 .press-item {
-  width: calc(20% - (var(--spacing-sm) / 4));
+  width: calc(20% - var(--spacing-sm));
+  margin-bottom: var(--spacing-md);
 }
 
 .press-item img {

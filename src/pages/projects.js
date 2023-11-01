@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Layout from '../components/layout'
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import Seo from '../components/seo'
 
 const Projects = ({ data }) => {
   const allProjects = data.allContentfulCaseStudy.nodes
@@ -129,5 +130,7 @@ export const query = graphql`
     }
   }
 `
+
+export const Head = () => <Seo title='Projects' />
 
 export default Projects
