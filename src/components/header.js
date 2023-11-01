@@ -24,7 +24,7 @@ const Header = () => {
           </div>
           <div className='secondary-sub'>
             <Link to='#'>Connect</Link>
-            <Link to='#'>Press</Link>
+            <Link to='/press'>Press</Link>
           </div>
         </div>
       </div>

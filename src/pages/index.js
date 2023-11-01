@@ -38,6 +38,9 @@ const Index = ({ data }) => {
           ))}
         </div>
       </div>
+      <div className='featured-container'>
+        <h2>Publications</h2>
+      </div>
     </Layout>
   )
 }

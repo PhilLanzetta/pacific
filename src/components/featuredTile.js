@@ -5,7 +5,7 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 const FeaturedTile = ({ project }) => {
   const { slug, title, subtitle, tileImage } = project.caseStudy
   return (
-    <Link to={`/projects/${slug}`} className={project.width}>
+    <Link to={`/projects/${slug}`} className={`featured-${project.width}`}>
       <GatsbyImage
         image={tileImage.image.gatsbyImageData}
         alt={tileImage.image.description}
