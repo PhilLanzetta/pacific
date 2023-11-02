@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, navigate } from 'gatsby'
+import HideOnScroll from './hideOnScroll'
 
 const Header = ({ location, setTags }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -7,9 +8,9 @@ const Header = ({ location, setTags }) => {
   return (
     <header>
       <div></div>
-      <div className='header-logo'>
+      <HideOnScroll>
         <Link to='/'>Pacific</Link>
-      </div>
+      </HideOnScroll>
       <div className='header-menu'>
         <button onClick={() => setIsOpen(!isOpen)}>
           Menu <span className='header-menu-button'>{isOpen ? 'x' : '+'}</span>

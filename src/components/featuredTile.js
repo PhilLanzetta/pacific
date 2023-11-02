@@ -9,6 +9,7 @@ const FeaturedTile = ({ project }) => {
       <GatsbyImage
         image={tileImage.image.gatsbyImageData}
         alt={tileImage.image.description}
+        className='featured-image'
       ></GatsbyImage>
       <h3 className='featured-tile-title'>{title}</h3>
       <h4 className='featured-tile-subtitle'>{subtitle}</h4>
