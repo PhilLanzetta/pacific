@@ -45,7 +45,6 @@ const Projects = ({ data, location }) => {
     <Layout location={location} setTags={setTags}>
       <div className='filter-container'>
         <div className='filter-categories'>
-          Filter by:{' '}
           <div className='filter-categories-buttons'>
             <button
               onClick={() => setFilterCat('D')}
