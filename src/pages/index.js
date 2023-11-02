@@ -6,6 +6,7 @@ import HomeHero from '../components/homeHero'
 import { BsArrowRight } from 'react-icons/bs'
 import FeaturedTile from '../components/featuredTile'
 import Carousel from '../components/carousel'
+import Explore from '../components/explore'
 
 const Index = ({ data }) => {
   const featuredProjects = data.contentfulHomePage.featuredProjects
@@ -72,6 +73,7 @@ const Index = ({ data }) => {
           ))}
         </div>
       </div>
+      <Explore></Explore>
     </Layout>
   )
 }

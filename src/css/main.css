@@ -992,3 +992,58 @@ About
   gap: var(--spacing-xs);
   font-style: italic;
 }
+
+.explore-container {
+  width: clamp(200px, 75%, 1200px);
+  margin: 0 auto;
+  margin-top: 100px;
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+.explore-container h2 {
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+.explore-tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  justify-content: center;
+  font-size: var(--font-md-resp);
+}
+
+.explore-tag-container a::after {
+  content: ',';
+}
+
+.explore-tag-container a:last-of-type:after {
+  content: '';
+}
+
+.related-projects {
+  padding: 3vw;
+  padding-top: 100px;
+}
+
+.related-projects h2 {
+  text-align: center;
+  font-weight: normal;
+  font-style: italic;
+  font-size: var(--font-lg-resp);
+}
+
+.related-projects-container {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.related-projects-container a {
+  width: calc(33% - (var(--spacing-sm) / 2));
+}
+
+.related-img {
+  aspect-ratio: 4 / 3;
+  margin-bottom: var(--spacing-xs);
+}

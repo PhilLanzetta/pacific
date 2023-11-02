@@ -4,10 +4,26 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import Content from '../components/content'
 import Layout from '../components/layout'
 import Seo from '../components/seo'
+import Explore from '../components/explore'
+import Related from '../components/related'
 
 const CaseStudy = ({ data }) => {
-  const { client, year, location, headerImage, content, headerText } =
-    data.contentfulCaseStudy
+  const {
+    client,
+    year,
+    location,
+    headerImage,
+    content,
+    headerText,
+    metadata,
+    slug,
+  } = data.contentfulCaseStudy
+
+  const relatedTags =
+    metadata?.tags?.length > 0
+      ? metadata.tags.map((tag) => tag.name)
+      : ['no tags']
+
   return (
     <Layout>
       <div className='case-study-page'>
@@ -76,6 +92,8 @@ const CaseStudy = ({ data }) => {
           {content && <Content content={content}></Content>}
         </div>
       </div>
+      <Related currentProjectSlug={slug} tags={relatedTags}></Related>
+      <Explore></Explore>
     </Layout>
   )
 }
@@ -83,10 +101,16 @@ const CaseStudy = ({ data }) => {
 export const query = graphql`
   query getSingleCaseStudy($slug: String) {
     contentfulCaseStudy(slug: { eq: $slug }) {
+      slug
       title
       year
       location
       client
+      metadata {
+        tags {
+          name
+        }
+      }
       headerImage {
         caption
         image {
