@@ -4,15 +4,23 @@ import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import Seo from '../components/seo'
 
-const Projects = ({ data }) => {
+const Projects = ({ data, location }) => {
   const allProjects = data.allContentfulCaseStudy.nodes
   const disciplineTags = data.allContentfulTag.nodes
     .filter((node) => node.name.includes('Discipline'))
     .map((node) => node.name)
 
+  const industryTags = data.allContentfulTag.nodes
+    .filter((node) => node.name.includes('Industry'))
+    .map((node) => node.name)
+
+  const topicTags = data.allContentfulTag.nodes
+    .filter((node) => node.name.includes('Topic'))
+    .map((node) => node.name)
+
   const [projects, setProjects] = useState(allProjects)
   const [filterCat, setFilterCat] = useState('D')
-  const [tags, setTags] = useState([])
+  const [tags, setTags] = useState(location.state?.tag || [])
 
   const handleTagClick = (newTag) => {
     if (tags.includes(newTag)) {
@@ -34,7 +42,7 @@ const Projects = ({ data }) => {
   }, [tags])
 
   return (
-    <Layout>
+    <Layout location={location} setTags={setTags}>
       <div className='filter-container'>
         <div className='filter-categories'>
           Filter by:{' '}
@@ -64,10 +72,45 @@ const Projects = ({ data }) => {
         {filterCat === 'D' && (
           <div className='tag-container'>
             Tags:{' '}
-            {disciplineTags.map((tag) => {
+            {disciplineTags.map((tag, index) => {
               const discipline = tag.split(': ')[1]
               return (
                 <button
+                  key={index}
+                  className={tags.includes(tag) ? 'active-filter-button' : ''}
+                  onClick={() => handleTagClick(tag)}
+                >
+                  {discipline}
+                </button>
+              )
+            })}
+          </div>
+        )}
+        {filterCat === 'I' && (
+          <div className='tag-container'>
+            Tags:{' '}
+            {industryTags.map((tag, index) => {
+              const discipline = tag.split(': ')[1]
+              return (
+                <button
+                  key={index}
+                  className={tags.includes(tag) ? 'active-filter-button' : ''}
+                  onClick={() => handleTagClick(tag)}
+                >
+                  {discipline}
+                </button>
+              )
+            })}
+          </div>
+        )}
+        {filterCat === 'T' && (
+          <div className='tag-container'>
+            Tags:{' '}
+            {topicTags.map((tag, index) => {
+              const discipline = tag.split(': ')[1]
+              return (
+                <button
+                  key={index}
                   className={tags.includes(tag) ? 'active-filter-button' : ''}
                   onClick={() => handleTagClick(tag)}
                 >

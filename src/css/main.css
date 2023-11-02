@@ -565,6 +565,7 @@ Case Study
 
 .tag-container {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--spacing-sm);
   margin-bottom: var(--spacing-md);
 }
