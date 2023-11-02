@@ -765,7 +765,6 @@ News
   width: 10%;
 }
 
-
 .news-title {
   width: 20%;
 }
@@ -1026,10 +1025,10 @@ About
 }
 
 .explore-container {
-  width: clamp(200px, 75%, 1200px);
+  width: clamp(200px, 55%, 1200px);
   margin: 0 auto;
   margin-top: 100px;
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: calc(var(--spacing-lg) + 100px);
   text-align: center;
 }
 
