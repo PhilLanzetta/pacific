@@ -715,16 +715,18 @@ Home
   width: calc(50% - (var(--spacing-md) / 2));
 }
 
-.featured-half-page img {
-  aspect-ratio: 4 / 3;
-}
-
 .featured-full-page {
   width: 100%;
 }
 
-.featured-full-page img {
+.featured-image-full-page {
+  min-width: 100%;
   aspect-ratio: 16 / 9;
+}
+
+.featured-image-half-page {
+  min-width: 100%;
+  aspect-ratio: 4 / 3;
 }
 
 .featured-tile-title {
@@ -876,7 +878,7 @@ News
   padding-right: var(--spacing-sm);
 }
 
-.carousel-title {
+.carousel-subtitle {
   font-style: italic;
 }
 

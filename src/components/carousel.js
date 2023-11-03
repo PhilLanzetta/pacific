@@ -24,17 +24,17 @@ const Carousel = ({ data, slideCount }) => {
     <Slider {...settings}>
       {data.map((pub) => (
         <Link
-          to={`/projects/${pub.slug}`}
+          to={`/projects/${pub.caseStudy.slug}`}
           key={pub.id}
           className='carousel-link'
         >
           <GatsbyImage
             className='carousel-image'
-            image={pub.headerImage.image.gatsbyImageData}
-            alt={pub.headerImage.image.description}
+            image={pub.featuredImage.gatsbyImageData}
+            alt={pub.featuredImage.description}
           ></GatsbyImage>
-          <p className='carousel-title'>{pub.title}</p>
-          <p className='carousel-subtitle'>{pub.subtitle}</p>
+          <p className='carousel-title'>{pub.caseStudy.title}</p>
+          <p className='carousel-subtitle'>{pub.caseStudy.subtitle}</p>
         </Link>
       ))}
     </Slider>

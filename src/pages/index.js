@@ -89,43 +89,40 @@ export const query = graphql`
       }
       featuredProjects {
         id
+        featuredImage {
+          gatsbyImageData
+          description
+        }
         caseStudy {
           title
           subtitle
           slug
-          tileImage {
-            image {
-              gatsbyImageData
-              description
-            }
-          }
         }
         width
       }
       featuredPublications {
         id
-        headerImage {
-          image {
-            gatsbyImageData
-            description
-          }
+        featuredImage {
+          gatsbyImageData
+          description
         }
-        slug
-        subtitle
-        title
-      }
-      featuredEditorial {
-        id
         caseStudy {
           title
           subtitle
           slug
-          tileImage {
-            image {
-              gatsbyImageData
-              description
-            }
-          }
+        }
+        width
+      }
+      featuredEditorial {
+        id
+        featuredImage {
+          gatsbyImageData
+          description
+        }
+        caseStudy {
+          title
+          subtitle
+          slug
         }
         width
       }
