@@ -404,6 +404,10 @@ Case Study
   margin: 0 auto;
 }
 
+.module-text-container {
+  margin-bottom: var(--spacing-lg);
+}
+
 .module-text-container h1 {
   text-align: center;
   font-weight: 400;
