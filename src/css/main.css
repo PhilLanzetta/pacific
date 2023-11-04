@@ -938,6 +938,8 @@ News
 .news-main-row {
   display: flex;
   padding: var(--spacing-sm) 3vw;
+  flex-wrap: wrap;
+  font-size: var(--font-sm-resp);
 }
 
 .news-date {
@@ -946,10 +948,12 @@ News
 
 .news-title {
   width: 20%;
+  padding-right: var(--spacing-sm);
 }
 
 .news-category {
   width: 15%;
+  padding-right: var(--spacing-sm);
 }
 
 .news-headline {
@@ -1007,7 +1011,52 @@ News
 
 /*
 =============== 
-News
+NEWS MEDIA
+===============
+*/
+
+@media screen and (max-width: 1000px) {
+  .news-date {
+    width: 100%;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .news-title {
+    width: 30%;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .news-category {
+    width: 15%;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .news-headline {
+    width: 55%;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .news-learn-more {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .news-secondary-row {
+    justify-content: flex-start;
+  }
+
+  .news-expanded-text {
+    width: 70%;
+  }
+
+  .news-image {
+    width: 30%;
+  }
+}
+
+/*
+=============== 
+PRESS
 ===============
 */
 
@@ -1173,13 +1222,14 @@ About
 
 .about-services {
   display: flex;
-  gap: var(--spacing-sm);
   width: 100%;
+  gap: var(--spacing-sm);
   margin-bottom: var(--spacing-lg);
+  flex-wrap: wrap;
 }
 
 .about-service-column {
-  width: calc(25% - (var(--spacing-sm) / 3));
+  width: calc(25% - var(--spacing-sm));
 }
 
 .about-service-title {
@@ -1205,6 +1255,7 @@ About
 .founders-container {
   display: flex;
   gap: var(--spacing-sm);
+  flex-wrap: wrap;
 }
 
 .founder {
@@ -1218,7 +1269,7 @@ About
 }
 
 .collections-preface {
-  width: calc(25% - (var(--spacing-sm) / 2));
+  width: calc(25% - var(--spacing-sm));
   font-style: italic;
   padding-right: var(--spacing-sm);
 }
@@ -1226,6 +1277,7 @@ About
 .collections-container {
   display: flex;
   gap: var(--spacing-sm);
+  flex-wrap: wrap;
 }
 
 .collections-list {
@@ -1273,6 +1325,47 @@ About
 .related-img {
   aspect-ratio: 4 / 3;
   margin-bottom: var(--spacing-xs);
+}
+
+/*
+=============== 
+About MEDIA
+===============
+*/
+
+@media screen and (max-width: 700px) {
+  .about-page {
+    width: 94vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .about-service-column {
+    width: calc(50% - var(--spacing-sm));
+    margin-bottom: var(--spacing-md);
+  }
+
+  .four-column-container {
+    columns: 2;
+  }
+
+  .founder-bio h3 {
+    padding: var(--spacing-sm) 0;
+  }
+
+  .founder {
+    width: 100%;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .collections-preface {
+    width: 100%;
+  }
+
+  .collections-list {
+    column-count: 2;
+    width: 100%;
+  }
 }
 
 /*
