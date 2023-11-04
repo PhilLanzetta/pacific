@@ -7,6 +7,7 @@ import { BsArrowRight } from 'react-icons/bs'
 import FeaturedTile from '../components/featuredTile'
 import Carousel from '../components/carousel'
 import Explore from '../components/explore'
+import NewsCarousel from '../components/newsCarousel'
 
 const Index = ({ data }) => {
   const featuredProjects = data.contentfulHomePage.featuredProjects
@@ -57,21 +58,7 @@ const Index = ({ data }) => {
       </div>
       <div className='featured-container'>
         <h2>News</h2>
-        <div className='featured-news-container'>
-          {featuredNews.map((news) => (
-            <Link to='/news' key={news.id} className='featured-news-link'>
-              <p>{news.newsTitle}</p>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: news.newsHeadline.childMarkdownRemark.html,
-                }}
-              ></div>
-              <div className='learn-more-link'>
-                <BsArrowRight></BsArrowRight> Read More
-              </div>
-            </Link>
-          ))}
-        </div>
+        <NewsCarousel data={featuredNews} slideCount={3}></NewsCarousel>
       </div>
       <Explore></Explore>
     </Layout>
