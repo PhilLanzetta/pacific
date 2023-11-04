@@ -570,6 +570,12 @@ Case Study
   height: 100%;
 }
 
+/*
+==========
+PROJECTS
+==========
+*/
+
 .projects-container {
   border-top: 1px solid #000;
   padding: 3vw;
@@ -612,6 +618,27 @@ Case Study
 .active-filter-button {
   font-style: italic;
   text-decoration: underline;
+}
+
+/*
+==========
+PROJECTS MEDIA
+==========
+*/
+
+@media screen and (max-width: 600px) {
+  .project-tile {
+    width: 100%;
+  }
+
+  .projects-container {
+    padding-top: 6vw;
+    gap: clamp(40px, 6vw, 80px);
+  }
+
+  .project-tile-title {
+    margin-top: var(--spacing-xs);
+  }
 }
 
 /*

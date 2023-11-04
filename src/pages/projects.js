@@ -133,7 +133,7 @@ const Projects = ({ data, location }) => {
                 alt={project.tileImage.image.description}
               ></GatsbyImage>
             )}
-            <p>
+            <p className='project-tile-title'>
               <em>{project.title}</em>
             </p>
             <p>{project.subtitle}</p>
