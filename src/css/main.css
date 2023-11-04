@@ -226,12 +226,15 @@ footer {
 .footer-link-container {
   display: flex;
   padding: 3vw;
-  justify-content: space-between;
+  justify-content: space-around;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
 }
 
 .footer-link-container a,
 .footer-link-container button {
   text-align: center;
+  margin-bottom: var(--spacing-sm);
 }
 
 .footer-logo {
@@ -244,6 +247,7 @@ footer {
   gap: var(--spacing-sm);
   padding: 3vw;
   padding-top: 0;
+  font-size: var(--font-sm-resp);
 }
 
 .email-pop-up {
@@ -286,7 +290,7 @@ footer {
 }
 
 .email-pop-up-form {
-  width: 250px;
+  width: clamp(100px, 100vw, 250px);
   display: flex;
   border: 1px solid grey;
   background: white;
@@ -314,6 +318,30 @@ footer {
 .email-submit-button {
   display: flex;
   align-items: center;
+}
+
+/*
+==========
+Footer MEDIA
+==========
+*/
+
+@media screen and (max-width: 600px) {
+  .footer-link-container {
+    padding-top: 6vw;
+  }
+
+  .footer-link-container a,
+  .footer-link-container button {
+    text-align: center;
+    margin-bottom: var(--spacing-sm);
+    width: calc(50% - (var(--spacing-sm) / 2));
+  }
+
+  .email-pop-up-container {
+  position: relative;
+  padding: 50px;
+}
 }
 
 /*
@@ -1143,4 +1171,102 @@ About
 .related-img {
   aspect-ratio: 4 / 3;
   margin-bottom: var(--spacing-xs);
+}
+
+/*
+==========
+CONNECT
+==========
+*/
+
+.connect-container {
+  border-top: 1px solid #707070;
+  padding: 3vw;
+  display: flex;
+}
+
+.contact-map-container {
+  width: 60%;
+  aspect-ratio: 1.5 / 1;
+  filter: grayscale(100%);
+}
+
+.connect-text-container {
+  width: 40%;
+}
+
+.connect-text-box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.connect-two-column {
+  display: flex;
+}
+
+.connect-two-column p,
+.connect-two-column a {
+  width: 50%;
+}
+
+.connect-two-column p:first-of-type {
+  width: 40%;
+}
+
+.connect-title {
+  font-style: italic;
+  margin-bottom: var(--spacing-sm);
+}
+
+.connect-text-grouping {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.contact-map-marker {
+  font-size: var(--font-md-resp);
+  position: relative;
+  bottom: 0;
+  transform: translateY(50%);
+}
+
+.contact-map-text {
+  position: relative;
+  left: var(--font-md-resp);
+  top: calc(-0.5rem - 1vw);
+  transform: translateY(50%);
+}
+
+/*
+==========
+CONNECT MEDIA
+==========
+*/
+
+@media screen and (max-width: 1000px) {
+  .connect-two-column {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 748px) {
+  .connect-container {
+    flex-direction: column-reverse;
+    gap: var(--spacing-lg);
+  }
+
+  .connect-two-column {
+    flex-direction: row;
+  }
+
+  .connect-text-container,
+  .contact-map-container {
+    width: 100%;
+  }
+
+  .contact-map-container {
+    aspect-ratio: 3 / 2;
+  }
 }

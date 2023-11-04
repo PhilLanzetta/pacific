@@ -81,7 +81,7 @@ const Header = ({ location, setTags }) => {
             </Link>
           </div>
           <div className='secondary-sub'>
-            <Link to='#' onClick={() => setIsOpen(false)}>
+            <Link to='/connect' onClick={() => setIsOpen(false)}>
               Connect
             </Link>
             <Link to='/press' onClick={() => setIsOpen(false)}>
