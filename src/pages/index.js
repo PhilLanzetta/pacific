@@ -8,12 +8,14 @@ import FeaturedTile from '../components/featuredTile'
 import Carousel from '../components/carousel'
 import Explore from '../components/explore'
 import NewsCarousel from '../components/newsCarousel'
+import ShopCarousel from '../components/shopCarousel'
 
 const Index = ({ data }) => {
   const featuredProjects = data.contentfulHomePage.featuredProjects
   const featuredPublications = data.contentfulHomePage.featuredPublications
   const featuredEditorial = data.contentfulHomePage.featuredEditorial
   const featuredNews = data.contentfulHomePage.featuredNews
+  const featuredProducts = data.allShopifyProduct.nodes
   return (
     <Layout>
       <HomeHero></HomeHero>
@@ -55,6 +57,10 @@ const Index = ({ data }) => {
             <FeaturedTile key={project.id} project={project}></FeaturedTile>
           ))}
         </div>
+      </div>
+      <div className='featured-container'>
+        <h2>Shop</h2>
+        <ShopCarousel data={featuredProducts} slideCount={3}></ShopCarousel>
       </div>
       <div className='featured-container'>
         <h2>News</h2>
@@ -120,6 +126,31 @@ export const query = graphql`
           childMarkdownRemark {
             html
           }
+        }
+      }
+    }
+    allShopifyProduct(
+      filter: { collections: { elemMatch: { title: { eq: "Featured" } } } }
+      limit: 3
+    ) {
+      nodes {
+        featuredImage {
+          localFile {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+        }
+        handle
+        id
+        priceRangeV2 {
+          minVariantPrice {
+            amount
+          }
+        }
+        metafields {
+          value
+          key
         }
       }
     }

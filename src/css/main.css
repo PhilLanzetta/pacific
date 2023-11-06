@@ -813,6 +813,26 @@ Home
   text-align: center;
 }
 
+.featured-shop-link {
+  width: 100%;
+  padding: 3vw 1.5vw;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.featured-product-info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding-top: var(--spacing-sm);
+}
+
+.featured-product-text {
+  text-align: left;
+}
+
 .prev-button,
 .next-button {
   position: absolute;
