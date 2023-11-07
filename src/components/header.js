@@ -1,16 +1,38 @@
 import React, { useState } from 'react'
 import { Link, navigate } from 'gatsby'
 import HideOnScroll from './hideOnScroll'
+import { HiOutlineShoppingBag } from 'react-icons/hi2'
+import Cart from './cart'
+import useStore from '../context/StoreContext'
 
 const Header = ({ location, setTags }) => {
   const [isOpen, setIsOpen] = useState(false)
+  const [isCartOpen, setIsCartOpen] = useState(false)
   const isProjectPage = location?.pathname === '/projects/'
+  const showCart = location?.pathname.includes('/shop/')
+  const { cart } = useStore()
+
   return (
     <header>
       <div></div>
       <HideOnScroll>
         <Link to='/'>Pacific</Link>
       </HideOnScroll>
+      {showCart && (
+        <div className='shop-cart'>
+          <button onClick={() => setIsCartOpen(!isCartOpen)}>
+            <HiOutlineShoppingBag></HiOutlineShoppingBag>{' '}
+            {cart.length > 0
+              ? cart
+                  .map((item) => item.quantity)
+                  .reduce((prev, next) => prev + next)
+              : ''}
+          </button>
+          {isCartOpen && (
+            <Cart toggleCart={() => setIsCartOpen(!isCartOpen)}></Cart>
+          )}
+        </div>
+      )}
       <div className='header-menu'>
         <button onClick={() => setIsOpen(!isOpen)}>
           Menu <span className='header-menu-button'>{isOpen ? 'x' : '+'}</span>
@@ -70,7 +92,7 @@ const Header = ({ location, setTags }) => {
                 Editorial
               </Link>
             )}
-            <Link to='#' onClick={() => setIsOpen(false)}>
+            <Link to='/shop' onClick={() => setIsOpen(false)}>
               Shop
             </Link>
             <Link to='/news' onClick={() => setIsOpen(false)}>

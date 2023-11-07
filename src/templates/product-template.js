@@ -30,7 +30,7 @@ const ProductPage = ({ location, data }) => {
   )[0]?.value
 
   return (
-    <Layout>
+    <Layout location={location}>
       <div className='product-page-container'>
         <div className='product-left'>
           {desktopMedia.map((image) => (
@@ -48,18 +48,28 @@ const ProductPage = ({ location, data }) => {
               dangerouslySetInnerHTML={{ __html: tagline }}
             ></div>
           ) : (
-            <h1>{title}</h1>
+            <h1 className='product-title'>{title}</h1>
           )}
           {priceRangeV2.minVariantPrice.amount > 0 && (
-            <p>${priceRangeV2.minVariantPrice.amount}</p>
+            <p className='product-price'>
+              ${priceRangeV2.minVariantPrice.amount}
+            </p>
           )}
           <div
             className='product-description'
             dangerouslySetInnerHTML={{ __html: descriptionHtml }}
           ></div>
-          {details && <div dangerouslySetInnerHTML={{ __html: details }}></div>}
+          {details && (
+            <div
+              dangerouslySetInnerHTML={{ __html: details }}
+              className='product-details'
+            ></div>
+          )}
           {totalInventory > 0 && (
-            <button onClick={() => addVariantToCart(data, 1)}>
+            <button
+              onClick={() => addVariantToCart(data, 1)}
+              className='add-to-cart-btn'
+            >
               Add to Cart
             </button>
           )}
