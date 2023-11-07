@@ -1485,3 +1485,33 @@ CONNECT MEDIA
     aspect-ratio: 3 / 2;
   }
 }
+
+/*
+==========
+PRODUCT
+==========
+*/
+
+.product-page-container {
+  padding-top: 100px;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.product-left {
+  width: 66%;
+  padding: 3vw;
+}
+
+.product-right {
+  width: 33%;
+  padding: 3vw;
+  padding-left: 0;
+  position: sticky;
+  top: 0;
+}
+
+.product-image {
+  margin-bottom: 3vw;
+}
