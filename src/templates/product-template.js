@@ -67,7 +67,7 @@ const ProductPage = ({ location, data }) => {
           )}
           {totalInventory > 0 && (
             <button
-              onClick={() => addVariantToCart(data, 1)}
+              onClick={() => addVariantToCart(data.shopifyProduct, 1)}
               className='add-to-cart-btn'
             >
               Add to Cart
@@ -108,6 +108,9 @@ export const query = graphql`
         }
       }
       totalInventory
+      variants {
+        shopifyId
+      }
     }
   }
 `

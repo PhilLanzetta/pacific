@@ -145,10 +145,11 @@ header {
   left: 0;
   width: 100%;
   display: flex;
-  align-items: center;
-  padding: 20px 3vw;
   mix-blend-mode: difference;
   color: #fff;
+  background: transparent;
+  align-items: center;
+  padding: 20px 3vw;
   z-index: 200;
 }
 
@@ -214,6 +215,129 @@ header div {
 
 .shop-cart {
   position: fixed;
+}
+
+.cart-icon {
+  fill: #fff;
+  height: 20px;
+  width: 20px;
+}
+
+.shop-bag-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cart-container {
+  position: fixed;
+  top: 80px;
+  width: clamp(300px, 100vw, 600px);
+  padding: 20px 3vw;
+  border: 1px solid #707070;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-height: calc(100vh - 80px);
+  overflow-y: scroll;
+  z-index: 300;
+  font-family: var(--font-secondary);
+}
+
+.close-cart {
+  align-self: flex-end;
+}
+
+.cart-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid #707070;
+}
+
+.checkout-info {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  gap: var(--spacing-sm);
+  font-size: 0.85rem;
+}
+
+.checkout-btn {
+  padding: 10px;
+  border: 1px solid #707070;
+  transition: all var(--fast-transition);
+}
+
+.checkout-btn:hover {
+  color: #fff;
+  background: #000;
+  opacity: 1;
+  transition: all var(--fast-transition);
+}
+
+.product-row-container {
+  display: flex;
+  gap: 20px;
+}
+
+.product-row-info {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-row-image {
+  width: 50%;
+}
+
+.cart-product-title {
+  margin-bottom: 10px;
+  font-size: calc(var(--font-sm-resp) + 4px);
+}
+
+.product-price {
+  align-self: flex-end;
+}
+
+.cart-remove {
+  display: inline-flex;
+  font-size: 0.75rem;
+  justify-self: flex-end;
+}
+
+.product-row-quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 20px 0 10px 0;
+}
+
+.product-quantity-label {
+  font-size: 0.75rem;
+}
+
+.quantity-btn {
+  border: 1px solid #707070;
+  width: 30px;
+  height: 30px;
+}
+
+.quantity-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-products-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
 }
 
 /*

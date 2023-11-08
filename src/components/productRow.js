@@ -9,32 +9,42 @@ const ProductRow = ({ item }) => {
     useStore()
 
   return (
-    <section className="product-row-container">
+    <section className='product-row-container'>
       <GatsbyImage
-        image={product.featuredImage.localFile.childImageSharp.gatsbyImageData}
+        image={
+          product.media[0]?.image.localFile.childImageSharp.gatsbyImageData
+        }
         className='product-row-image'
       ></GatsbyImage>
       <article className='product-row-info'>
-        <p>
+        <p className='cart-product-title'>
           <span>{product.title}</span>
         </p>
+        <p>
+          <span>{`$${product.priceRangeV2.minVariantPrice.amount}`}</span>
+        </p>
         <article className='product-row-quantity'>
-          <p>Quantity {quantity}</p>
-          <button
-            className='quantity-btn'
-            onClick={() =>
-              lowerCartItemQuantity(product.variants[0]?.shopifyId)
-            }
-            disabled={quantity === 1}
-          >
-            -
-          </button>
-          <button
-            onClick={() => addCartItemQuantity(product.variants[0]?.shopifyId)}
-            className='quantity-btn'
-          >
-            +
-          </button>
+          <p>QUANTITY</p>
+          <div className='quantity-buttons'>
+            <button
+              className='quantity-btn'
+              onClick={() =>
+                lowerCartItemQuantity(product.variants[0]?.shopifyId)
+              }
+              disabled={quantity === 1}
+            >
+              -
+            </button>
+            <p>{quantity}</p>
+            <button
+              onClick={() =>
+                addCartItemQuantity(product.variants[0]?.shopifyId)
+              }
+              className='quantity-btn'
+            >
+              +
+            </button>
+          </div>
         </article>
         <button
           onClick={() => removeLineItem(product.variants[0]?.shopifyId)}
@@ -43,11 +53,6 @@ const ProductRow = ({ item }) => {
           Remove from cart
         </button>
       </article>
-      <p>
-        <span>{`$${
-          product.priceRangeV2.minVariantPrice.amount * quantity
-        }`}</span>
-      </p>
     </section>
   )
 }

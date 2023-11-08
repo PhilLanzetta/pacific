@@ -11,37 +11,19 @@ const Cart = ({ toggleCart }) => {
       .replace(/[.,]00$/, '')
 
   return (
-    <section>
-      <article>
-        <p>CART</p>
-        <button onClick={toggleCart}>
-          <HiOutlineXMark></HiOutlineXMark>
-        </button>
-      </article>
-      <article>
+    <section className='cart-container'>
+      <button onClick={toggleCart} className='close-cart'>
+        <HiOutlineXMark></HiOutlineXMark>
+      </button>
+      <article className='cart-products-container'>
         {cart.length > 0 ? (
           cart.map((item, index) => <ProductRow key={index} item={item} />)
         ) : (
           <p>Your cart is empty.</p>
         )}
       </article>
-      <article>
-        <div>
-          <div>SUBTOTAL</div>
-          <div>
-            $
-            {checkout.subtotalPrice
-              ? formattedNum(checkout.subtotalPrice?.amount)
-              : 0}
-          </div>
-        </div>
-        <div>
-          <div>TAX</div>
-          <div>
-            ${checkout.totalTax ? formattedNum(checkout.totalTax?.amount) : 0}
-          </div>
-        </div>
-        <div>
+      <article className='cart-summary'>
+        <div className='checkout-info'>
           <div>TOTAL</div>
           <div>
             $
@@ -53,8 +35,9 @@ const Cart = ({ toggleCart }) => {
         <button
           disabled={cart.length === 0}
           onClick={() => window.open(checkout.webUrl)}
+          className='checkout-btn'
         >
-          CHECK OUT
+          PURCHASE
         </button>
       </article>
     </section>
