@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import { AiOutlinePlus } from 'react-icons/ai'
+import { AiOutlineClose, AiOutlinePlus } from 'react-icons/ai'
 
 const NewsItem = ({ item }) => {
   const [open, setOpen] = useState(false)
@@ -23,7 +23,9 @@ const NewsItem = ({ item }) => {
         <div className='news-learn-more'>
           <button onClick={toggleOpen}>
             {open ? (
-              <div className='news-more-link'>Close</div>
+              <div className='news-more-link'>
+                Close <AiOutlineClose></AiOutlineClose>
+              </div>
             ) : (
               <div className='news-more-link'>
                 Learn More <AiOutlinePlus></AiOutlinePlus>
