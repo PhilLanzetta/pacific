@@ -999,7 +999,7 @@ Home
 }
 
 .explore-container {
-  width: clamp(200px, 55%, 1200px);
+  width: clamp(200px, 75%, 1600px);
   margin: 0 auto;
   margin-top: 100px;
   margin-bottom: calc(var(--spacing-lg) + 100px);
@@ -1016,7 +1016,7 @@ Home
   flex-wrap: wrap;
   gap: var(--spacing-xs);
   justify-content: center;
-  font-size: var(--font-md-resp);
+  font-size: calc(var(--font-md-resp) * 1.5);
 }
 
 .explore-tag-container a::after {
@@ -1400,6 +1400,10 @@ About
   line-height: var(--lofty-line-height);
 }
 
+.four-column-container ul {
+  list-style: none;
+}
+
 .founders-container {
   display: flex;
   gap: var(--spacing-sm);
@@ -1715,4 +1719,9 @@ PRODUCT
   margin-top: var(--spacing-sm);
   padding: var(--spacing-sm) var(--spacing-lg);
   border: 1px solid #707070;
+}
+
+
+.about-slider {
+  position: relative;
 }

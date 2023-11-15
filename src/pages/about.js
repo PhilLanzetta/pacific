@@ -3,7 +3,64 @@ import Layout from '../components/layout'
 import { Link, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { BsArrowRight } from 'react-icons/bs'
+import Slider from 'react-slick'
 import Seo from '../components/seo'
+
+function NextArrow(props) {
+  const { onClick } = props
+  return (
+    <div
+      className={props.addClassName}
+      onClick={onClick}
+      onKeyDown={onClick}
+      role='button'
+      tabIndex={0}
+      aria-label='go to next'
+    >
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        viewBox='0 0 30 30'
+        className='hero-svg'
+      >
+        <path
+          id='Path_118'
+          data-name='Path 118'
+          d='M0,8,5.436,0,11,8'
+          transform='translate(19.688 9.5) rotate(90)'
+          fill='none'
+        />
+      </svg>
+    </div>
+  )
+}
+
+function PrevArrow(props) {
+  const { onClick } = props
+  return (
+    <div
+      className={props.addClassName}
+      onClick={onClick}
+      onKeyDown={onClick}
+      role='button'
+      tabIndex={0}
+      aria-label='go to previous'
+    >
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        viewBox='0 0 30 30'
+        className='hero-svg'
+      >
+        <path
+          id='Path_118'
+          data-name='Path 118'
+          d='M0,0,5.436,8,11,0'
+          transform='translate(18.313 9.5) rotate(90)'
+          fill='none'
+        />
+      </svg>
+    </div>
+  )
+}
 
 const About = ({ data }) => {
   const {
@@ -20,10 +77,16 @@ const About = ({ data }) => {
     experientialServices,
     digitalServices,
     selectClients,
-    studioImage,
+    studioImages,
     collections,
     talksLectures,
   } = data.contentfulAboutPage
+
+  const settings = {
+    nextArrow: <NextArrow addClassName='next-button' />,
+    prevArrow: <PrevArrow addClassName='prev-button' />,
+  }
+
   return (
     <Layout>
       <div className='about-page'>
@@ -81,11 +144,12 @@ const About = ({ data }) => {
         </div>
         <div className='about-section'>
           <h2 className='about-section-title'>Select Clients</h2>
-          <ul className='four-column-container'>
-            {selectClients.map((client, index) => (
-              <li key={index}>{client}</li>
-            ))}
-          </ul>
+          <ul
+            className='four-column-container'
+            dangerouslySetInnerHTML={{
+              __html: selectClients.childMarkdownRemark.html,
+            }}
+          ></ul>
         </div>
         <div className='about-section'>
           <h2 className='about-section-title'>Founders</h2>
@@ -118,10 +182,15 @@ const About = ({ data }) => {
         </div>
         <div className='about-section'>
           <h2 className='about-section-title'>Studio</h2>
-          <GatsbyImage
-            image={studioImage.gatsbyImageData}
-            alt={studioImage.description}
-          ></GatsbyImage>
+          <Slider {...settings} className='about-slider'>
+            {studioImages.map((image, index) => (
+              <GatsbyImage
+                key={index}
+                image={image.gatsbyImageData}
+                alt={image.description}
+              ></GatsbyImage>
+            ))}
+          </Slider>
         </div>
         <div className='about-section'>
           <h2 className='about-studio-section-title'>Collections</h2>
@@ -139,11 +208,12 @@ const About = ({ data }) => {
         </div>
         <div className='about-section'>
           <h2 className='about-studio-section-title'>Artists</h2>
-          <ul className='four-column-container'>
-            {artists.map((artist, index) => (
-              <li key={index}>{artist}</li>
-            ))}
-          </ul>
+          <ul
+            className='four-column-container'
+            dangerouslySetInnerHTML={{
+              __html: artists.childMarkdownRemark.html,
+            }}
+          ></ul>
         </div>
         <div className='about-section'>
           <h2 className='about-studio-section-title'>Awards</h2>
@@ -197,7 +267,11 @@ export const query = graphql`
         gatsbyImageData
         description
       }
-      artists
+      artists {
+        childMarkdownRemark {
+          html
+        }
+      }
       awards
       brandingServices
       collections
@@ -213,7 +287,7 @@ export const query = graphql`
         description
         gatsbyImageData
       }
-      studioImage {
+      studioImages {
         description
         gatsbyImageData
       }
@@ -222,7 +296,11 @@ export const query = graphql`
           html
         }
       }
-      selectClients
+      selectClients {
+        childMarkdownRemark {
+          html
+        }
+      }
       printServices
     }
   }
