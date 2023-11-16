@@ -146,7 +146,7 @@ const Projects = ({ data, location }) => {
 
 export const query = graphql`
   query {
-    allContentfulCaseStudy(sort: { year: DESC }) {
+    allContentfulCaseStudy(sort: { order: DESC }) {
       nodes {
         id
         tileImage {
