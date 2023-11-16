@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import Content from '../components/content'
 import Layout from '../components/layout'
@@ -16,6 +16,7 @@ const CaseStudy = ({ data }) => {
     content,
     headerText,
     metadata,
+    awards,
     slug,
   } = data.contentfulCaseStudy
 
@@ -23,6 +24,10 @@ const CaseStudy = ({ data }) => {
     metadata?.tags?.length > 0
       ? metadata.tags.map((tag) => tag.name)
       : ['no tags']
+
+  const disciplineTags = metadata?.tags?.filter((tag) =>
+    tag.name.includes('Discipline')
+  )
 
   return (
     <Layout>
@@ -88,6 +93,36 @@ const CaseStudy = ({ data }) => {
                 <p>{location}</p>
               </div>
             )}
+            {disciplineTags?.length > 0 && (
+              <div>
+                <p>
+                  <em>Scope</em>
+                </p>
+                <div className='case-study-tag-container'>
+                  {disciplineTags.map((tag, index) => (
+                    <Link
+                      key={index}
+                      to='/projects'
+                      state={{ tag: [tag.name] }}
+                    >
+                      {tag.name.split(': ')[1]}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+            {awards && (
+              <div>
+                <p>
+                  <em>Awards</em>
+                </p>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: awards.childMarkdownRemark.html,
+                  }}
+                ></div>
+              </div>
+            )}
           </div>
           {content && <Content content={content}></Content>}
         </div>
@@ -109,6 +144,11 @@ export const query = graphql`
       metadata {
         tags {
           name
+        }
+      }
+      awards {
+        childMarkdownRemark {
+          html
         }
       }
       headerImage {

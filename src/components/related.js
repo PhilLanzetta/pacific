@@ -40,8 +40,6 @@ const Related = ({ currentProjectSlug, tags }) => {
 
   const relatedProjects = relatedProjectsArray.map((item) => item.project)
 
-  console.log(relatedProjectsArray)
-
   return (
     <div className='related-projects'>
       <h2>Explore More</h2>

@@ -546,12 +546,21 @@ Case Study
 
 .case-study-left {
   position: absolute;
+  width: calc(25% - 3vw);
   left: var(--primary-margin);
   top: var(--spacing-lg);
 }
 
-.case-study-left div {
+.case-study-left > div {
   margin-bottom: var(--spacing-md);
+}
+
+.case-study-tag-container a::after {
+  content: ', ';
+}
+
+.case-study-tag-container a:last-of-type::after {
+  content: none;
 }
 
 .module-text-container,
@@ -1720,7 +1729,6 @@ PRODUCT
   padding: var(--spacing-sm) var(--spacing-lg);
   border: 1px solid #707070;
 }
-
 
 .about-slider {
   position: relative;
