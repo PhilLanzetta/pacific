@@ -24,7 +24,7 @@ const ProductTile = ({ product }) => {
     <Link to={`/shop/${handle}`} className='product-tile'>
       <div className='product-tile-image'>
         <GatsbyImage
-          image={featuredImage.localFile.childImageSharp.gatsbyImageData}
+          image={featuredImage?.localFile.childImageSharp.gatsbyImageData}
         ></GatsbyImage>
         <div className='payment-info'>
           {totalInventory > 0 && <p>${priceRangeV2.minVariantPrice.amount}</p>}
