@@ -1730,6 +1730,25 @@ PRODUCT
   border: 1px solid #707070;
 }
 
+.related-products-container {
+  padding: 3vw;
+  padding-top: 6vw;
+}
+
+.related-title {
+  display: inline-block;
+  font-size: var(--font-sm-resp);
+  font-weight: normal;
+  font-style: italic;
+  padding-bottom: var(--spacing-sm);
+}
+
+.related-product-tiles {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
 .about-slider {
   position: relative;
 }

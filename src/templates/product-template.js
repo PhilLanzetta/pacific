@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import useWindowSize from '../utils/useWindowSize'
 import useStore from '../context/StoreContext'
+import RelatedProducts from '../components/relatedProducts'
 
 const ProductPage = ({ location, data }) => {
   const { width } = useWindowSize()
@@ -28,6 +29,14 @@ const ProductPage = ({ location, data }) => {
   const details = metafields.filter(
     (metafield) => metafield.key === 'details'
   )[0]?.value
+
+  console.log(metafields)
+
+  const relatedProductsHandles = metafields
+    .filter((field) => field.key === 'related_products')[0]
+    ?.value.split('|')
+
+  console.log(relatedProductsHandles)
 
   return (
     <Layout location={location}>
@@ -75,6 +84,11 @@ const ProductPage = ({ location, data }) => {
           )}
         </div>
       </div>
+      {relatedProductsHandles?.length > 0 && (
+        <RelatedProducts
+          productHandles={relatedProductsHandles}
+        ></RelatedProducts>
+      )}
     </Layout>
   )
 }
