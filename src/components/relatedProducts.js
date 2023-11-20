@@ -42,8 +42,6 @@ const RelatedProducts = ({ productHandles }) => {
     )
     .flat()
 
-  console.log(productArray)
-
   return (
     <div className='related-products-container'>
       <p className='related-title'>Related</p>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
@@ -8,6 +8,7 @@ import RelatedProducts from '../components/relatedProducts'
 
 const ProductPage = ({ location, data }) => {
   const { width } = useWindowSize()
+  const [variantIndex, setVariantIndex] = useState(0)
   const isMobile = width < 601
   const {
     media,
@@ -16,6 +17,7 @@ const ProductPage = ({ location, data }) => {
     descriptionHtml,
     priceRangeV2,
     totalInventory,
+    variants,
   } = data.shopifyProduct
 
   const desktopMedia = media.slice(1)
@@ -30,13 +32,15 @@ const ProductPage = ({ location, data }) => {
     (metafield) => metafield.key === 'details'
   )[0]?.value
 
-  console.log(metafields)
-
   const relatedProductsHandles = metafields
     .filter((field) => field.key === 'related_products')[0]
     ?.value.split('|')
 
-  console.log(relatedProductsHandles)
+  const sizes = variants
+    .map((variant) =>
+      variant.selectedOptions.filter((option) => option.name === 'Size')
+    )
+    .flat()
 
   return (
     <Layout location={location}>
@@ -75,12 +79,32 @@ const ProductPage = ({ location, data }) => {
             ></div>
           )}
           {totalInventory > 0 && (
-            <button
-              onClick={() => addVariantToCart(data.shopifyProduct, 1)}
-              className='add-to-cart-btn'
-            >
-              Add to Cart
-            </button>
+            <>
+              {sizes?.length > 0 && (
+                <div className='product-size-container'>
+                  <p>Size</p>
+                  <p>-</p>
+                  <select
+                    className='product-size-select'
+                    onChange={(e) => setVariantIndex(e.target.value * 1)}
+                  >
+                    {sizes.map((size, index) => (
+                      <option key={index} value={index}>
+                        {size.value}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
+              <button
+                onClick={() =>
+                  addVariantToCart(data.shopifyProduct, variantIndex, 1)
+                }
+                className='add-to-cart-btn'
+              >
+                Add to Cart
+              </button>
+            </>
           )}
         </div>
       </div>
@@ -124,6 +148,10 @@ export const query = graphql`
       totalInventory
       variants {
         shopifyId
+        selectedOptions {
+          name
+          value
+        }
       }
     }
   }

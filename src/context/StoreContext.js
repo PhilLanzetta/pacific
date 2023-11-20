@@ -84,7 +84,7 @@ export const StoreProvider = ({ children }) => {
     }
   }, [cart])
 
-  const addVariantToCart = async (product, quantity) => {
+  const addVariantToCart = async (product, variantIndex, quantity) => {
     setLoading(true)
 
     if (checkout.id === '') {
@@ -93,7 +93,7 @@ export const StoreProvider = ({ children }) => {
     }
 
     const checkoutID = checkout.id
-    const variantId = product.variants[0]?.shopifyId
+    const variantId = product.variants[variantIndex]?.shopifyId
     const parsedQuantity = parseInt(quantity, 10)
 
     const lineItemsToUpdate = [
@@ -113,23 +113,30 @@ export const StoreProvider = ({ children }) => {
       let updatedCart = []
       if (cart.length > 0) {
         const itemIsInCart = cart.find(
-          (item) => item.product.variants[0]?.shopifyId === variantId
+          (item) =>
+            item.product.variants[variantIndex]?.shopifyId === variantId &&
+            item.variantIndex === variantIndex
         )
 
         if (itemIsInCart) {
           const newProduct = {
             product: { ...itemIsInCart.product },
+            variantIndex,
             quantity: itemIsInCart.quantity + parsedQuantity,
           }
           const otherItems = cart.filter(
-            (item) => item.product.variants[0]?.shopifyId !== variantId
+            (item) =>
+              item.product.variants[variantIndex]?.shopifyId !== variantId ||
+              item.variantIndex !== variantIndex
           )
           updatedCart = [...otherItems, newProduct]
         } else {
-          updatedCart = cart.concat([{ product, quantity: parsedQuantity }])
+          updatedCart = cart.concat([
+            { product, variantIndex, quantity: parsedQuantity },
+          ])
         }
       } else {
-        updatedCart = [{ product, quantity: parsedQuantity }]
+        updatedCart = [{ product, variantIndex, quantity: parsedQuantity }]
       }
       setCart(updatedCart)
 
@@ -140,7 +147,7 @@ export const StoreProvider = ({ children }) => {
     }
   }
 
-  const lowerCartItemQuantity = async (variantId) => {
+  const lowerCartItemQuantity = async (variantId, variantIndex) => {
     setLoading(true)
 
     if (checkout.id === '') {
@@ -178,17 +185,22 @@ export const StoreProvider = ({ children }) => {
       setCheckout(res)
 
       const itemIsInCart = cart.find(
-        (item) => item.product.variants[0]?.shopifyId === variantId
+        (item) =>
+          item.product.variants[variantIndex]?.shopifyId === variantId &&
+          item.variantIndex === variantIndex
       )
 
       let updatedCart = []
       if (itemIsInCart) {
         const newProduct = {
           product: { ...itemIsInCart.product },
+          variantIndex,
           quantity: itemIsInCart.quantity > 1 ? itemIsInCart.quantity - 1 : 1,
         }
         const otherItems = cart.filter(
-          (item) => item.product.variants[0]?.shopifyId !== variantId
+          (item) =>
+            item.product.variants[variantIndex]?.shopifyId !== variantId ||
+            item.variantIndex !== variantIndex
         )
         updatedCart = [...otherItems, newProduct]
       } else {
@@ -202,7 +214,7 @@ export const StoreProvider = ({ children }) => {
     }
   }
 
-  const addCartItemQuantity = async (variantId) => {
+  const addCartItemQuantity = async (variantId, variantIndex) => {
     setLoading(true)
 
     if (checkout.id === '') {
@@ -240,17 +252,22 @@ export const StoreProvider = ({ children }) => {
       setCheckout(res)
 
       const itemIsInCart = cart.find(
-        (item) => item.product.variants[0]?.shopifyId === variantId
+        (item) =>
+          item.product.variants[variantIndex]?.shopifyId === variantId &&
+          item.variantIndex === variantIndex
       )
 
       let updatedCart = []
       if (itemIsInCart) {
         const newProduct = {
           product: { ...itemIsInCart.product },
+          variantIndex,
           quantity: itemIsInCart.quantity + 1,
         }
         const otherItems = cart.filter(
-          (item) => item.product.variants[0]?.shopifyId !== variantId
+          (item) =>
+            item.product.variants[variantIndex]?.shopifyId !== variantId ||
+            item.variantIndex !== variantIndex
         )
         updatedCart = [...otherItems, newProduct]
       } else {
@@ -264,7 +281,7 @@ export const StoreProvider = ({ children }) => {
     }
   }
 
-  const removeLineItem = async (variantId) => {
+  const removeLineItem = async (variantId, variantIndex) => {
     setLoading(true)
     try {
       if (checkout.lineItems.length < 1) throw new Error('Cart is empty')
@@ -287,7 +304,9 @@ export const StoreProvider = ({ children }) => {
       setCheckout(res)
 
       const updatedCart = cart.filter(
-        (item) => item.product.variants[0]?.shopifyId !== variantId
+        (item) =>
+          item.product.variants[variantIndex]?.shopifyId !== variantId ||
+          item.variantIndex !== variantIndex
       )
       setCart(updatedCart)
       setLoading(false)

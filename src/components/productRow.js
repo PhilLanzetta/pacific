@@ -3,7 +3,13 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import useStore from '../context/StoreContext'
 
 const ProductRow = ({ item }) => {
-  const { product, quantity } = item
+  const { product, quantity, variantIndex } = item
+
+  const size = product.variants
+    .map((variant) =>
+      variant.selectedOptions.filter((option) => option.name === 'Size')
+    )
+    ?.flat()[variantIndex]
 
   const { removeLineItem, lowerCartItemQuantity, addCartItemQuantity } =
     useStore()
@@ -20,6 +26,7 @@ const ProductRow = ({ item }) => {
         <p className='cart-product-title'>
           <span>{product.title}</span>
         </p>
+        {size && <p className='product-row-size'>Size - {size.value}</p>}
         <p>
           <span>{`$${product.priceRangeV2.minVariantPrice.amount}`}</span>
         </p>
@@ -29,7 +36,10 @@ const ProductRow = ({ item }) => {
             <button
               className='quantity-btn'
               onClick={() =>
-                lowerCartItemQuantity(product.variants[0]?.shopifyId)
+                lowerCartItemQuantity(
+                  product.variants[variantIndex]?.shopifyId,
+                  variantIndex
+                )
               }
               disabled={quantity === 1}
             >
@@ -38,7 +48,10 @@ const ProductRow = ({ item }) => {
             <p>{quantity}</p>
             <button
               onClick={() =>
-                addCartItemQuantity(product.variants[0]?.shopifyId)
+                addCartItemQuantity(
+                  product.variants[variantIndex]?.shopifyId,
+                  variantIndex
+                )
               }
               className='quantity-btn'
             >
@@ -47,7 +60,12 @@ const ProductRow = ({ item }) => {
           </div>
         </article>
         <button
-          onClick={() => removeLineItem(product.variants[0]?.shopifyId)}
+          onClick={() =>
+            removeLineItem(
+              product.variants[variantIndex]?.shopifyId,
+              variantIndex
+            )
+          }
           className='cart-remove'
         >
           Remove from cart

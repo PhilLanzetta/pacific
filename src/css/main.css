@@ -304,6 +304,10 @@ header div {
   align-self: flex-end;
 }
 
+.product-row-size {
+  margin-bottom: var(--spacing-xs);
+}
+
 .cart-remove {
   display: inline-flex;
   font-size: 0.75rem;
@@ -1722,11 +1726,30 @@ PRODUCT
   margin-bottom: var(--spacing-md);
 }
 
+.product-size-container {
+  display: flex;
+  border: 1px solid #707070;
+  padding: var(--spacing-xs);
+  gap: var(--spacing-xs);
+}
+
+.product-size-select {
+  border: none;
+  outline: none;
+  display: flex;
+  flex-grow: 1;
+  font-family: var(--font-primary);
+  font-size: var(--font-sm-resp);
+}
+
 .add-to-cart-btn {
+  display: flex;
+  width: 100%;
+  justify-content: center;
   font-family: var(--font-secondary);
   text-transform: uppercase;
   margin-top: var(--spacing-sm);
-  padding: var(--spacing-sm) var(--spacing-lg);
+  padding: var(--spacing-sm);
   border: 1px solid #707070;
 }
 
