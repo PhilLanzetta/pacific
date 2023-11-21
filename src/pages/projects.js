@@ -59,13 +59,6 @@ const Projects = ({ data, location }) => {
             >
               Industry
             </button>{' '}
-            /{' '}
-            <button
-              onClick={() => setFilterCat('T')}
-              className={filterCat === 'T' ? 'filter-category-active' : ''}
-            >
-              Topic
-            </button>
           </div>
         </div>
         {filterCat === 'D' && (
