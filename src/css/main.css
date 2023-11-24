@@ -1017,6 +1017,7 @@ Home
   margin-top: 100px;
   margin-bottom: calc(var(--spacing-lg) + 100px);
   text-align: center;
+  padding: 0 3vw;
 }
 
 .explore-container h2 {
@@ -1774,4 +1775,38 @@ PRODUCT
 
 .about-slider {
   position: relative;
+}
+
+/*
+==========
+PRODUCTS MEDIA
+==========
+*/
+
+@media screen and (max-width: 600px) {
+  .product-tile {
+    width: 100%;
+  }
+
+  .product-page-container {
+    flex-wrap: wrap;
+  }
+
+  .product-right {
+    width: 100%;
+    position: static;
+    padding-left: 3vw;
+  }
+
+  .mobile-product-image {
+    width: 100%;
+    padding: 0 3vw;
+  }
+
+  .mobile-product-secondary-images {
+    display: flex;
+    flex-direction: column;
+    padding: 3vw;
+    gap: 3vw;
+  }
 }

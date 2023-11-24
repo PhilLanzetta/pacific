@@ -21,6 +21,8 @@ const ProductPage = ({ location, data }) => {
   } = data.shopifyProduct
 
   const desktopMedia = media.slice(1)
+  const mobileHero = media[1]
+  const mobileSecondary = media.slice(2)
 
   const { addVariantToCart } = useStore()
 
@@ -45,15 +47,26 @@ const ProductPage = ({ location, data }) => {
   return (
     <Layout location={location}>
       <div className='product-page-container'>
-        <div className='product-left'>
-          {desktopMedia.map((image) => (
+        {isMobile ? (
+          <div className='mobile-product-image'>
             <GatsbyImage
-              key={image.id}
-              image={image.image?.localFile?.childImageSharp?.gatsbyImageData}
+              image={
+                mobileHero.image?.localFile?.childImageSharp?.gatsbyImageData
+              }
               className='product-image'
             ></GatsbyImage>
-          ))}
-        </div>
+          </div>
+        ) : (
+          <div className='product-left'>
+            {desktopMedia.map((image) => (
+              <GatsbyImage
+                key={image.id}
+                image={image.image?.localFile?.childImageSharp?.gatsbyImageData}
+                className='product-image'
+              ></GatsbyImage>
+            ))}
+          </div>
+        )}
         <div className='product-right'>
           {tagline ? (
             <div
@@ -107,6 +120,19 @@ const ProductPage = ({ location, data }) => {
             </>
           )}
         </div>
+        {isMobile ? (
+          <div className='mobile-product-secondary-images'>
+            {mobileSecondary.map((image) => (
+              <GatsbyImage
+                key={image.id}
+                image={image.image?.localFile?.childImageSharp?.gatsbyImageData}
+                className='product-image'
+              ></GatsbyImage>
+            ))}
+          </div>
+        ) : (
+          <div></div>
+        )}
       </div>
       {relatedProductsHandles?.length > 0 && (
         <RelatedProducts
