@@ -344,6 +344,12 @@ header div {
   gap: var(--spacing-sm);
 }
 
+@media screen and (max-width: 600px) {
+  header {
+    padding: 20px;
+  }
+}
+
 /*
 ==========
 Footer
@@ -1328,6 +1334,13 @@ PRESS
 
 .carousel-subtitle {
   font-style: italic;
+}
+
+@media screen and (max-width: 600px) {
+  .press-item {
+    width: calc(50% - (var(--spacing-sm) / 2));
+    margin-bottom: var(--spacing-md);
+  }
 }
 
 /*
