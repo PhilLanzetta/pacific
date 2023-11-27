@@ -18,6 +18,7 @@ const CaseStudy = ({ data }) => {
     metadata,
     awards,
     slug,
+    press,
   } = data.contentfulCaseStudy
 
   const relatedTags =
@@ -123,6 +124,23 @@ const CaseStudy = ({ data }) => {
                 ></div>
               </div>
             )}
+            {press && (
+              <div className='case-study-tag-container'>
+                <p>
+                  <em>Press</em>
+                </p>
+                {press.map((pressItem) => (
+                  <a
+                    href={pressItem.articleUrl}
+                    target='_blank'
+                    rel='noreferrer'
+                    key={pressItem.id}
+                  >
+                    {pressItem.publication}
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
           {content && <Content content={content}></Content>}
         </div>
@@ -150,6 +168,11 @@ export const query = graphql`
         childMarkdownRemark {
           html
         }
+      }
+      press {
+        id
+        publication
+        articleUrl
       }
       headerImage {
         caption
