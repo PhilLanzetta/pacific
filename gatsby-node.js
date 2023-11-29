@@ -25,12 +25,21 @@ exports.createPages = async ({ actions, graphql }) => {
           }
         }
       }
+      allShopifyCollection {
+        edges {
+          node {
+            handle
+          }
+        }
+      }
     }
   `)
 
   const caseStudies = result.data.allContentfulCaseStudy.edges
 
   const products = result.data.allShopifyProduct.edges
+
+  const collections = result.data.allShopifyCollection.edges
 
   caseStudies.forEach(({ node }) => {
     const caseStudySlug = node.slug
@@ -47,6 +56,15 @@ exports.createPages = async ({ actions, graphql }) => {
       path: `/shop/${productSlug}`,
       component: require.resolve('./src/templates/product-template.js'),
       context: { handle: productSlug },
+    })
+  })
+
+  collections.forEach(({ node }) => {
+    const collectionSlug = node.handle
+    createPage({
+      path: `/collections/${collectionSlug}`,
+      component: require.resolve('./src/templates/collection-template.js'),
+      context: { handle: collectionSlug },
     })
   })
 }
