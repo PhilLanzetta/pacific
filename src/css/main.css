@@ -574,6 +574,22 @@ Case Study
   content: none;
 }
 
+.case-study-purchase-button {
+  font-style: italic;
+  border: 1px solid #707070;
+  border-radius: 100px;
+  padding: 5px 20px;
+  transition: var(--fast-transition);
+}
+
+.case-study-purchase-button:hover {
+  opacity: 1;
+  background: #000;
+  color: #fff;
+  border: 1px solid #000;
+  transition: var(--fast-transition);
+}
+
 .module-text-container,
 .audio-module-container {
   width: var(--body-max-width);

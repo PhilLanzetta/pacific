@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Link, navigate } from 'gatsby'
 import HideOnScroll from './hideOnScroll'
-import { HiOutlineShoppingBag } from 'react-icons/hi2'
 import Cart from './cart'
 import useStore from '../context/StoreContext'
 

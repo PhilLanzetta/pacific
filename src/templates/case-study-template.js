@@ -19,6 +19,7 @@ const CaseStudy = ({ data }) => {
     awards,
     slug,
     press,
+    shopifyHandle,
   } = data.contentfulCaseStudy
 
   const relatedTags =
@@ -141,6 +142,14 @@ const CaseStudy = ({ data }) => {
                 ))}
               </div>
             )}
+            {shopifyHandle && (
+              <Link
+                to={`/shop${shopifyHandle}`}
+                className='case-study-purchase-button'
+              >
+                Purchase
+              </Link>
+            )}
           </div>
           {content && <Content content={content}></Content>}
         </div>
@@ -158,6 +167,7 @@ export const query = graphql`
       title
       year
       location
+      shopifyHandle
       client
       metadata {
         tags {
