@@ -107,7 +107,10 @@ const Header = ({ location, setTags }) => {
                   Editorial
                 </Link>
               )}
-              <Link to='/collections/editions' onClick={() => setIsOpen(false)}>
+              <Link
+                to='/collections/everything'
+                onClick={() => setIsOpen(false)}
+              >
                 Shop
               </Link>
               <Link to='/news' onClick={() => setIsOpen(false)}>
