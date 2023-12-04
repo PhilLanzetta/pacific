@@ -5,7 +5,9 @@ import ProductTile from '../components/productTile'
 
 const CollectionTemplate = ({ data, location }) => {
   const products = data.shopifyCollection.products
-  const collections = data.allShopifyCollection.nodes
+  const collections = data.allShopifyCollection.nodes.filter(
+    (collection) => collection.title !== 'Featured'
+  )
 
   return (
     <Layout location={location}>
