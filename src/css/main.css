@@ -1840,3 +1840,28 @@ PRODUCTS MEDIA
     gap: 3vw;
   }
 }
+
+.privacy-page-title {
+  font-size: var(--font-sm-resp);
+  padding-left: 3vw;
+  padding-top: 100px;
+  padding-bottom: var(--spacing-sm);
+}
+
+.privacy-container {
+  width: var(--body-max-width);
+  margin: var(--spacing-md) auto;
+}
+
+.privacy-container p {
+  margin-bottom: var(--spacing-md);
+}
+
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: var(--spacing-sm);
+}
