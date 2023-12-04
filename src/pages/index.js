@@ -130,7 +130,7 @@ export const query = graphql`
       }
     }
     allShopifyProduct(
-      filter: { collections: { elemMatch: { title: { eq: "Featured" } } } }
+      filter: { collections: { elemMatch: { handle: { eq: "featured" } } } }
       limit: 3
     ) {
       nodes {
