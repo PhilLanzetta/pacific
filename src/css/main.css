@@ -736,6 +736,34 @@ Case Study
 
 /*
 ==========
+CASE STUDY MEDIA
+==========
+*/
+
+@media screen and (max-width: 600px) {
+  .header-image,
+  .header-image-with-text,
+  .text-header {
+    margin-bottom: 0;
+  }
+
+  .case-study-left {
+    position: static;
+    width: 100%;
+    padding: var(--primary-margin);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+  }
+
+  .module-text-container,
+  .audio-module-container {
+    padding: var(--primary-margin);
+  }
+}
+
+/*
+==========
 PROJECTS
 ==========
 */
