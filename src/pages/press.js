@@ -64,7 +64,7 @@ const Press = ({ data }) => {
               <p className='press-publication'>{item.publication}</p>
               <p>{item.title}</p>
               <div className='press-link-out'>
-                <BsArrowUpRight></BsArrowUpRight> VIEW ARTICLE
+                VIEW ARTICLE <BsArrowUpRight></BsArrowUpRight>
               </div>
             </a>
           ))}

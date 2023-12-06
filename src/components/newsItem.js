@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { AiOutlineClose, AiOutlinePlus } from 'react-icons/ai'
+import { BsArrowRight } from 'react-icons/bs'
 
 const NewsItem = ({ item }) => {
   const [open, setOpen] = useState(false)
@@ -45,8 +46,11 @@ const NewsItem = ({ item }) => {
             className='news-expanded-text-text'
           ></div>
           {item.associatedCaseStudy && (
-            <Link to={`/projects/${item.associatedCaseStudy.slug}`}>
-              VIEW PROJECT
+            <Link
+              to={`/projects/${item.associatedCaseStudy.slug}`}
+              className='news-view-project'
+            >
+              VIEW PROJECT <BsArrowRight></BsArrowRight>
             </Link>
           )}
         </div>

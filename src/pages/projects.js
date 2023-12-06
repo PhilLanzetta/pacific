@@ -3,6 +3,7 @@ import Layout from '../components/layout'
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import Seo from '../components/seo'
+import { Fade } from 'react-awesome-reveal'
 
 const Projects = ({ data, location }) => {
   const allProjects = data.allContentfulCaseStudy.nodes
@@ -69,7 +70,13 @@ const Projects = ({ data, location }) => {
               return (
                 <button
                   key={index}
-                  className={tags.includes(tag) ? 'active-filter-button' : ''}
+                  className={
+                    tags.length > 0
+                      ? tags.includes(tag)
+                        ? 'active-filter-button'
+                        : 'non-active-filter-button'
+                      : ''
+                  }
                   onClick={() => handleTagClick(tag)}
                 >
                   {discipline}
@@ -115,22 +122,20 @@ const Projects = ({ data, location }) => {
       </div>
       <div className='projects-container'>
         {projects.map((project) => (
-          <Link
-            key={project.id}
-            to={`/projects/${project.slug}`}
-            className='project-tile'
-          >
-            {project.tileImage && (
-              <GatsbyImage
-                image={project.tileImage.image.gatsbyImageData}
-                alt={project.tileImage.image.description}
-              ></GatsbyImage>
-            )}
-            <p className='project-tile-title'>
-              <em>{project.title}</em>
-            </p>
-            <p>{project.subtitle}</p>
-          </Link>
+          <Fade className='project-tile' triggerOnce={true} key={project.id}>
+            <Link to={`/projects/${project.slug}`}>
+              {project.tileImage && (
+                <GatsbyImage
+                  image={project.tileImage.image.gatsbyImageData}
+                  alt={project.tileImage.image.description}
+                ></GatsbyImage>
+              )}
+              <p className='project-tile-title'>
+                <em>{project.title}</em>
+              </p>
+              <p>{project.subtitle}</p>
+            </Link>
+          </Fade>
         ))}
       </div>
     </Layout>
