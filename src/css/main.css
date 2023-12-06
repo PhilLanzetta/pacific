@@ -740,6 +740,21 @@ CASE STUDY MEDIA
 ==========
 */
 
+@media screen and (max-width: 1110px) {
+  .case-study-left {
+    position: static;
+    margin-top: calc(var(--spacing-lg) * -1);
+    margin-bottom: var(--spacing-lg);
+    width: var(--body-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: var(--primary-margin);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .header-image,
   .header-image-with-text,
@@ -747,17 +762,25 @@ CASE STUDY MEDIA
     margin-bottom: 0;
   }
 
-  .case-study-left {
-    position: static;
-    width: 100%;
-    padding: var(--primary-margin);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5px;
-  }
-
   .module-text-container,
   .audio-module-container {
+    padding: var(--primary-margin);
+  }
+
+  .image-module-2,
+  .image-module-3,
+  .image-module-4 {
+    width: 100%;
+  }
+
+  .image-module-1,
+  .image-module-2,
+  .image-module-3,
+  .image-module-4 {
+    margin-bottom: 6vw;
+  }
+
+  .case-study-left {
     padding: var(--primary-margin);
   }
 }
@@ -1571,7 +1594,7 @@ About
   width: calc(33% - (var(--spacing-sm) / 2));
 }
 
-.related-img {
+.carousel-image-related {
   aspect-ratio: 4 / 3;
   margin-bottom: var(--spacing-xs);
 }
@@ -1614,6 +1637,10 @@ About MEDIA
   .collections-list {
     column-count: 2;
     width: 100%;
+  }
+
+  .studio-carousel-image {
+    padding-right: 3vw;
   }
 }
 
@@ -1868,7 +1895,7 @@ PRODUCTS MEDIA
 
 @media screen and (max-width: 600px) {
   .product-tile {
-    width: 100%;
+    width: calc(50% - (var(--spacing-sm) / 2));
   }
 
   .product-page-container {

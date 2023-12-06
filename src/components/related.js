@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql, useStaticQuery, Link } from 'gatsby'
 import { RelatedProjectsFactory } from './relatedProjectsFactory'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import RelatedCarousel from './relatedCarousel'
 
 const Related = ({ currentProjectSlug, tags }) => {
   const data = useStaticQuery(graphql`
@@ -43,21 +44,7 @@ const Related = ({ currentProjectSlug, tags }) => {
   return (
     <div className='related-projects'>
       <h2>Explore More</h2>
-      <div className='related-projects-container'>
-        {relatedProjects.map((project) => (
-          <Link key={project.id} to={`/projects/${project.slug}`}>
-            <GatsbyImage
-              image={project.tileImage.image.gatsbyImageData}
-              alt={project.tileImage.image.description}
-              className='related-img'
-            ></GatsbyImage>
-            <p>
-              <em>{project.title}</em>
-            </p>
-            <p>{project.subtitle}</p>
-          </Link>
-        ))}
-      </div>
+      <RelatedCarousel slideCount={3} data={relatedProjects}></RelatedCarousel>
     </div>
   )
 }

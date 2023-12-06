@@ -8,7 +8,9 @@ const Header = ({ location, setTags }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [isCartOpen, setIsCartOpen] = useState(false)
   const isProjectPage = location?.pathname === '/projects/'
-  const showCart = location?.pathname.includes('/shop/')
+  const showCart =
+    location?.pathname.includes('/shop/') ||
+    location?.pathname.includes('/collections/')
   const { cart } = useStore()
 
   return (

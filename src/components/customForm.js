@@ -56,8 +56,9 @@ const CustomForm = ({ status, message, onValidated, setEmailOpen }) => {
           <input
             type='text'
             name='b_a3dc4614ab0904a898901e6de_db4bc02555'
-            tabindex='-1'
+            tabIndex='-1'
             value=''
+            readOnly
             hidden
           />
           <button type='submit' className='email-submit-button'>

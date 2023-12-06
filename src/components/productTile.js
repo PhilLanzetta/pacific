@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import { Fade } from 'react-awesome-reveal'
 
 const ProductTile = ({ product }) => {
   const {
@@ -21,28 +22,37 @@ const ProductTile = ({ product }) => {
   )[0]?.value
 
   return (
-    <Link to={`/shop/${handle}`} className='product-tile'>
-      <div className='product-tile-image'>
-        <GatsbyImage
-          image={featuredImage?.localFile.childImageSharp.gatsbyImageData}
-        ></GatsbyImage>
-        <div className='payment-info'>
-          {totalInventory > 0 && <p>${priceRangeV2.minVariantPrice.amount}</p>}
-          {totalInventory < 1 && (
-            <p className='product-status'>
-              {inquire && 'Inquire'}
-              {forthcoming && 'Forthcoming'} {preSale && 'Pre-sale'}
-              {!inquire &&
-                !forthcoming &&
-                !preSale &&
-                !hideOutOfPrint &&
-                'Out of Print'}
-            </p>
-          )}
+    <Fade triggerOnce={true} className='product-tile'>
+      <Link to={`/shop/${handle}`}>
+        <div className='product-tile-image'>
+          <GatsbyImage
+            image={featuredImage?.localFile.childImageSharp.gatsbyImageData}
+          ></GatsbyImage>
+          <div className='payment-info'>
+            {totalInventory > 0 && (
+              <p>${priceRangeV2.minVariantPrice.amount}</p>
+            )}
+            {totalInventory < 1 && (
+              <p className='product-status'>
+                {inquire && 'Inquire'}
+                {forthcoming && 'Forthcoming'} {preSale && 'Pre-sale'}
+                {!inquire &&
+                  !forthcoming &&
+                  !preSale &&
+                  !hideOutOfPrint &&
+                  'Out of Print'}
+              </p>
+            )}
+          </div>
         </div>
-      </div>
-        {tagline && <div dangerouslySetInnerHTML={{ __html: tagline }} className='product-tile-title'></div>}
-    </Link>
+        {tagline && (
+          <div
+            dangerouslySetInnerHTML={{ __html: tagline }}
+            className='product-tile-title'
+          ></div>
+        )}
+      </Link>
+    </Fade>
   )
 }
 

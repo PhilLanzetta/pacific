@@ -5,14 +5,31 @@ import ProductTile from '../components/productTile'
 
 const CollectionTemplate = ({ data, location }) => {
   const products = data.shopifyCollection.products
-  const collections = data.allShopifyCollection.nodes.filter(
+  const allCollections = data.allShopifyCollection.nodes.filter(
     (collection) => collection.title !== 'Featured'
+  )
+
+  const collections = allCollections.filter(
+    (collection) => collection.title !== 'Everything'
+  )
+
+  const everything = allCollections.filter(
+    (collection) => collection.title === 'Everything'
   )
 
   return (
     <Layout location={location}>
       <h1 className='product-page-title'>Shop</h1>
       <div className='product-tag-container'>
+        {everything.map((collection) => (
+          <Link
+            key={collection.id}
+            to={`/collections/${collection.handle}`}
+            activeClassName='active-filter-button'
+          >
+            {collection.title}
+          </Link>
+        ))}
         {collections.map((collection) => (
           <Link
             key={collection.id}

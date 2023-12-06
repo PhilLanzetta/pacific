@@ -85,6 +85,16 @@ const About = ({ data }) => {
   const settings = {
     nextArrow: <NextArrow addClassName='next-button' />,
     prevArrow: <PrevArrow addClassName='prev-button' />,
+    responsive: [
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1.15,
+          infinite: false,
+          arrows: false,
+        },
+      },
+    ],
   }
 
   return (
@@ -184,11 +194,12 @@ const About = ({ data }) => {
           <h2 className='about-section-title'>Studio</h2>
           <Slider {...settings} className='about-slider'>
             {studioImages.map((image, index) => (
-              <GatsbyImage
-                key={index}
-                image={image.gatsbyImageData}
-                alt={image.description}
-              ></GatsbyImage>
+              <div className='studio-carousel-image' key={index}>
+                <GatsbyImage
+                  image={image.gatsbyImageData}
+                  alt={image.description}
+                ></GatsbyImage>
+              </div>
             ))}
           </Slider>
         </div>
