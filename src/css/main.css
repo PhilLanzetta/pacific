@@ -164,6 +164,10 @@ header div {
   transition: all var(--fast-transition);
 }
 
+.header-logo img {
+  width: clamp(100px, 12.5vw, 400px);
+}
+
 .header-logo-hide {
   opacity: 0;
   transition: all var(--fast-transition);
@@ -376,8 +380,8 @@ footer {
 }
 
 .footer-logo {
-  text-align: center;
-  font-size: 35vw;
+  width: 100%;
+  padding: var(--primary-margin);
 }
 
 .bottom-footer {
@@ -718,8 +722,8 @@ Case Study
 .video-module-control {
   position: absolute;
   z-index: 1000;
-  height: clamp(20px, 8vw, 40px);
-  width: clamp(20px, 8vw, 40px);
+  height: clamp(15px, 8vw, 40px);
+  width: clamp(15px, 8vw, 40px);
   color: #fff;
 }
 
@@ -794,7 +798,8 @@ CASE STUDY MEDIA
   .image-module-1,
   .image-module-2,
   .image-module-3,
-  .image-module-4 {
+  .image-module-4,
+  .video-module-container {
     margin-bottom: 6vw;
   }
 

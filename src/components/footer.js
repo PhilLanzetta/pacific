@@ -3,6 +3,7 @@ import { Link } from 'gatsby'
 import { AiOutlineClose } from 'react-icons/ai'
 import MailchimpSubscribe from 'react-mailchimp-subscribe'
 import CustomForm from './customForm'
+import Logo from '../images/logo.svg'
 
 const postUrl = process.env.GATSBY_MAIL_KEY
 
@@ -59,17 +60,13 @@ const Footer = () => {
           <p>Brooklyn, NY, 11222, USA</p>
         </a>
       </div>
-      <p className='footer-logo'>Pacific</p>
+      <img src={Logo} alt='Pacific' className='footer-logo' />
       <div className='bottom-footer'>
         &copy; Pacific {new Date().getFullYear()}
         <Link to='/privacy'>Privacy</Link>
         <Link to='/shipping'>Shipping</Link>
       </div>
-      <div
-        className={`email-pop-up ${
-          emailOpen ? 'email-pop-up-show' : ''
-        }`}
-      >
+      <div className={`email-pop-up ${emailOpen ? 'email-pop-up-show' : ''}`}>
         <div className='email-pop-up-container'>
           <button className='email-pop-up-close'>
             <AiOutlineClose

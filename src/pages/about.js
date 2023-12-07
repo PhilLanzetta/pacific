@@ -157,7 +157,10 @@ const About = ({ data }) => {
           <ul
             className='four-column-container'
             dangerouslySetInnerHTML={{
-              __html: selectClients.childMarkdownRemark.html,
+              __html: selectClients.childMarkdownRemark.html.replace(
+                /href/g,
+                "target='_blank' rel='noreferrer' href"
+              ),
             }}
           ></ul>
         </div>
@@ -222,7 +225,10 @@ const About = ({ data }) => {
           <ul
             className='four-column-container'
             dangerouslySetInnerHTML={{
-              __html: artists.childMarkdownRemark.html,
+              __html: artists.childMarkdownRemark.html.replace(
+                /href/g,
+                "target='_blank' rel='noreferrer' href"
+              ),
             }}
           ></ul>
         </div>
