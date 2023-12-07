@@ -715,23 +715,41 @@ Case Study
   width: 100%;
 }
 
-.module-video-player {
+.video-module-control {
   position: absolute;
-  top: 0;
-  left: 0;
+  z-index: 1000;
+  height: clamp(20px, 8vw, 40px);
+  width: clamp(20px, 8vw, 40px);
+  color: #fff;
 }
 
-.module-play-btn {
-  width: clamp(25px, 10%, 80px);
-  position: absolute;
+.video-module-pause {
+  bottom: 5px;
+  left: 5px;
+}
+
+.video-module-play {
+  height: 10vw;
+  width: 10vw;
+  padding: 0;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.module-play-btn svg {
-  width: 100%;
-  height: 100%;
+.video-module-play path {
+  stroke-width: 8;
+}
+
+.video-module-volume {
+  bottom: 5px;
+  right: 10px;
+}
+
+.module-video-player {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /*

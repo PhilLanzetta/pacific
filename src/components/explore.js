@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, graphql, useStaticQuery } from 'gatsby'
+import { Fade } from 'react-awesome-reveal'
 
 const Explore = () => {
   const data = useStaticQuery(graphql`
@@ -37,18 +38,20 @@ const Explore = () => {
 
   return (
     <div className='explore-container'>
-      <h2>Explore Our Website</h2>
-      <div className='explore-tag-container'>
-        {randomTags.map((tag) => (
-          <Link
-            to='/projects'
-            state={{ tag: [tag.name] }}
-            className='explore-tag-link'
-          >
-            {tag.name.split(': ')[1]}
-          </Link>
-        ))}
-      </div>
+      <Fade triggerOnce>
+        <h2>Explore Our Website</h2>
+        <div className='explore-tag-container'>
+          {randomTags.map((tag) => (
+            <Link
+              to='/projects'
+              state={{ tag: [tag.name] }}
+              className='explore-tag-link'
+            >
+              {tag.name.split(': ')[1]}
+            </Link>
+          ))}
+        </div>
+      </Fade>
     </div>
   )
 }

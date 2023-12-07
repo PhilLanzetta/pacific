@@ -9,6 +9,7 @@ import Carousel from '../components/carousel'
 import Explore from '../components/explore'
 import NewsCarousel from '../components/newsCarousel'
 import ShopCarousel from '../components/shopCarousel'
+import { Fade } from 'react-awesome-reveal'
 
 const Index = ({ data }) => {
   const featuredProjects = data.contentfulHomePage.featuredProjects
@@ -22,49 +23,61 @@ const Index = ({ data }) => {
       <div className='home-about-preview'>
         <div className='home-about-preview-section'>
           <h2 className='home-about-headline'>
-            {data.contentfulHomePage.aboutHeadline}
+            <Fade triggerOnce>{data.contentfulHomePage.aboutHeadline}</Fade>
           </h2>
         </div>
         <div className='home-about-preview-section'>
-          <div
-            className='home-about-excerpt'
-            dangerouslySetInnerHTML={{
-              __html:
-                data.contentfulHomePage.aboutExcerpt.childMarkdownRemark.html,
-            }}
-          ></div>
-          <Link to='/about' className='learn-more-link'>
-            <BsArrowRight></BsArrowRight> Learn More
-          </Link>
+          <Fade triggerOnce>
+            <div
+              className='home-about-excerpt'
+              dangerouslySetInnerHTML={{
+                __html:
+                  data.contentfulHomePage.aboutExcerpt.childMarkdownRemark.html,
+              }}
+            ></div>
+            <Link to='/about' className='learn-more-link'>
+              <BsArrowRight></BsArrowRight> Learn More
+            </Link>
+          </Fade>
         </div>
       </div>
       <div className='featured-container'>
-        <h2>Featured Projects</h2>
-        <div className='featured-tile-container'>
-          {featuredProjects.map((project) => (
-            <FeaturedTile key={project.id} project={project}></FeaturedTile>
-          ))}
-        </div>
+        <Fade triggerOnce>
+          <h2>Featured Projects</h2>
+          <div className='featured-tile-container'>
+            {featuredProjects.map((project) => (
+              <FeaturedTile key={project.id} project={project}></FeaturedTile>
+            ))}
+          </div>
+        </Fade>
       </div>
       <div className='featured-container'>
-        <h2>Publications</h2>
-        <Carousel data={featuredPublications} slideCount={2.75}></Carousel>
+        <Fade triggerOnce>
+          <h2>Publications</h2>
+          <Carousel data={featuredPublications} slideCount={2.75}></Carousel>
+        </Fade>
       </div>
       <div className='featured-container'>
-        <h2>Editorial</h2>
-        <div className='featured-tile-container'>
-          {featuredEditorial.map((project) => (
-            <FeaturedTile key={project.id} project={project}></FeaturedTile>
-          ))}
-        </div>
+        <Fade triggerOnce>
+          <h2>Editorial</h2>
+          <div className='featured-tile-container'>
+            {featuredEditorial.map((project) => (
+              <FeaturedTile key={project.id} project={project}></FeaturedTile>
+            ))}
+          </div>
+        </Fade>
       </div>
       <div className='featured-container'>
-        <h2>Shop</h2>
-        <ShopCarousel data={featuredProducts} slideCount={3}></ShopCarousel>
+        <Fade triggerOnce>
+          <h2>Shop</h2>
+          <ShopCarousel data={featuredProducts} slideCount={3}></ShopCarousel>
+        </Fade>
       </div>
       <div className='featured-container'>
-        <h2>News</h2>
-        <NewsCarousel data={featuredNews} slideCount={3}></NewsCarousel>
+        <Fade triggerOnce>
+          <h2>News</h2>
+          <NewsCarousel data={featuredNews} slideCount={3}></NewsCarousel>
+        </Fade>
       </div>
       <Explore></Explore>
     </Layout>

@@ -90,7 +90,7 @@ const Header = ({ location, setTags }) => {
                   Publications
                 </Link>
               )}
-              {isProjectPage ? (
+              {/* {isProjectPage ? (
                 <button
                   onClick={() => {
                     setTags(['Discipline: Editorial'])
@@ -108,7 +108,7 @@ const Header = ({ location, setTags }) => {
                 >
                   Editorial
                 </Link>
-              )}
+              )} */}
               <Link
                 to='/collections/everything'
                 onClick={() => setIsOpen(false)}
