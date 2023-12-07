@@ -51,7 +51,7 @@ const HomeHero = () => {
                 ? { minHeight: height, minWidth: minVerticalWidth }
                 : { minHeight: minVerticalHeight, minWidth: width }
             }
-            src={`${data.contentfulHomePage.homeVideoPortrait}?autoplay=1&muted=1&playsinline=1&controls=0&loop=1%autopause=0`}
+            src={`${data.contentfulHomePage.homeVideoPortrait}?autoplay=1&muted=1&playsinline=1&controls=0&loop=1&autopause=0`}
             title='Pacific reel'
           />
         </div>
