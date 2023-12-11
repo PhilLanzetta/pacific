@@ -16,6 +16,7 @@ const ProductTile = ({ product }) => {
   const forthcoming = tags.includes('Forthcoming')
   const preSale = tags.includes('Pre-sale')
   const hideOutOfPrint = tags.includes('Hide OUT OF PRINT')
+  const notStocked = tags.includes('Not Stocked')
 
   const tagline = metafields.filter(
     (metafield) => metafield.key === 'tagline'
@@ -36,9 +37,11 @@ const ProductTile = ({ product }) => {
               <p className='product-status'>
                 {inquire && 'Inquire'}
                 {forthcoming && 'Forthcoming'} {preSale && 'Pre-sale'}
+                {notStocked && 'Not Stocked'}
                 {!inquire &&
                   !forthcoming &&
                   !preSale &&
+                  !notStocked &&
                   !hideOutOfPrint &&
                   'Out of Print'}
               </p>

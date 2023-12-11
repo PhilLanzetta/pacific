@@ -175,7 +175,7 @@ header div {
 }
 
 .header-logo img {
-  width: clamp(100px, 12.5vw, 400px);
+  width: clamp(70px, 8.75vw, 280px);
 }
 
 .header-logo-hide {
