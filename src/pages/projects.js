@@ -7,6 +7,9 @@ import { Fade } from 'react-awesome-reveal'
 
 const Projects = ({ data, location }) => {
   const allProjects = data.allContentfulCaseStudy.nodes
+  const featuredProjects = data.allContentfulCaseStudy.nodes.filter(
+    (node) => node.isFeatured === true
+  )
   const disciplineTags = data.allContentfulTag.nodes
     .filter((node) => node.name.includes('Discipline'))
     .map((node) => node.name)
@@ -19,9 +22,10 @@ const Projects = ({ data, location }) => {
     .filter((node) => node.name.includes('Topic'))
     .map((node) => node.name)
 
-  const [projects, setProjects] = useState(allProjects)
+  const [projects, setProjects] = useState(featuredProjects)
   const [filterCat, setFilterCat] = useState('D')
   const [tags, setTags] = useState(location.state?.tag || [])
+  const [userClick, setUserClick] = useState(false)
 
   const handleTagClick = (newTag) => {
     if (tags.includes(newTag)) {
@@ -32,14 +36,20 @@ const Projects = ({ data, location }) => {
   }
 
   useEffect(() => {
-    let result = allProjects
     if (tags.length) {
-      result = allProjects.filter((project) => {
+      const result = allProjects.filter((project) => {
         const projectTags = project.metadata.tags.map((tag) => tag.name)
         return tags.some((value) => projectTags.includes(value))
       })
+      setProjects(result)
+      setUserClick(true)
     }
-    setProjects(result)
+    if (userClick && tags.length === 0) {
+      setProjects(allProjects)
+    }
+    if (!userClick) {
+      return
+    }
   }, [tags])
 
   return (
@@ -121,22 +131,27 @@ const Projects = ({ data, location }) => {
         )}
       </div>
       <div className='projects-container'>
-        {projects.map((project) => (
-          <Fade className='project-tile' triggerOnce={true} key={project.id}>
-            <Link to={`/projects/${project.slug}`}>
-              {project.tileImage && (
-                <GatsbyImage
-                  image={project.tileImage.image.gatsbyImageData}
-                  alt={project.tileImage.image.description}
-                ></GatsbyImage>
-              )}
-              <p className='project-tile-title'>
-                <em>{project.title}</em>
-              </p>
-              <p>{project.subtitle}</p>
-            </Link>
-          </Fade>
-        ))}
+        {!userClick && (
+          <h2 className='featured-projects-heading'>Featured Projects</h2>
+        )}
+        <div className='project-tiles-container'>
+          {projects.map((project) => (
+            <Fade className='project-tile' triggerOnce={true} key={project.id}>
+              <Link to={`/projects/${project.slug}`}>
+                {project.tileImage && (
+                  <GatsbyImage
+                    image={project.tileImage.image.gatsbyImageData}
+                    alt={project.tileImage.image.description}
+                  ></GatsbyImage>
+                )}
+                <p className='project-tile-title'>
+                  <em>{project.title}</em>
+                </p>
+                <p>{project.subtitle}</p>
+              </Link>
+            </Fade>
+          ))}
+        </div>
       </div>
     </Layout>
   )
@@ -154,6 +169,7 @@ export const query = graphql`
           }
         }
         slug
+        isFeatured
         subtitle
         title
         metadata {

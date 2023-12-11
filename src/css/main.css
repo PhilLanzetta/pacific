@@ -133,6 +133,16 @@ p {
   margin: var(--primary-margin);
 }
 
+@media screen and (max-width: 600px) {
+  a:hover {
+    opacity: 1;
+  }
+
+  button:hover {
+    opacity: 1;
+  }
+}
+
 /*
 ==========
 Header
@@ -816,10 +826,22 @@ PROJECTS
 
 .projects-container {
   border-top: 1px solid #000;
+  padding-top: 3vw;
+}
+
+.project-tiles-container {
   padding: 3vw;
+  padding-top: 0;
   display: flex;
   flex-wrap: wrap;
   gap: 3vw;
+}
+
+.featured-projects-heading {
+  padding-bottom: 1.5vw;
+  padding-left: 3vw;
+  margin-bottom: 0;
+  font-size: var(--font-sm-resp);
 }
 
 .project-tile {
@@ -853,7 +875,7 @@ PROJECTS
 .tag-container {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
 }
 
 .tag-container button {
