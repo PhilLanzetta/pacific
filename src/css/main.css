@@ -872,6 +872,10 @@ PROJECTS
   color: #000;
 }
 
+.filter-categories-buttons button {
+  position: relative;
+}
+
 .tag-container {
   display: flex;
   flex-wrap: wrap;
@@ -885,7 +889,8 @@ PROJECTS
   transition: all 400ms;
 }
 
-.tag-container button::before {
+.tag-container button::before,
+.filter-categories-buttons button::before {
   content: '';
   height: calc(100% + var(--spacing-xs));
   width: 100%;
