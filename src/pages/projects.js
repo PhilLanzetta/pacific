@@ -56,21 +56,19 @@ const Projects = ({ data, location }) => {
     <Layout location={location} setTags={setTags}>
       <div className='filter-container'>
         <div className='filter-categories'>
-          <div className='filter-categories-buttons'>
             <button
               onClick={() => setFilterCat('D')}
-              className={filterCat === 'D' ? 'filter-category-active' : ''}
+              className={filterCat === 'D' ? 'filter-category-active' : 'filter-category-button'}
             >
               Discipline
             </button>{' '}
             /{' '}
             <button
               onClick={() => setFilterCat('I')}
-              className={filterCat === 'I' ? 'filter-category-active' : ''}
+              className={filterCat === 'I' ? 'filter-category-active' : 'filter-category-button'}
             >
               Industry
             </button>{' '}
-          </div>
         </div>
         {filterCat === 'D' && (
           <div className='tag-container'>

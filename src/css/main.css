@@ -859,21 +859,18 @@ PROJECTS
 
 .filter-categories {
   font-family: var(--font-secondary);
-  display: flex;
-  gap: var(--spacing-xs);
-  margin-bottom: var(--spacing-xs);
 }
 
-.filter-categories-buttons {
+.filter-categories button {
+  padding: var(--spacing-xs) 0;
+}
+
+.filter-category-button {
   color: rgba(0, 0, 0, 0.5);
 }
 
 .filter-category-active {
   color: #000;
-}
-
-.filter-categories-buttons button {
-  position: relative;
 }
 
 .tag-container {
@@ -889,8 +886,7 @@ PROJECTS
   transition: all 400ms;
 }
 
-.tag-container button::before,
-.filter-categories-buttons button::before {
+.tag-container button::before {
   content: '';
   height: calc(100% + var(--spacing-xs));
   width: 100%;
