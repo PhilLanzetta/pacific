@@ -132,7 +132,7 @@ const Projects = ({ data, location }) => {
       </div>
       <div className='projects-container'>
         {!userClick && (
-          <h2 className='featured-projects-heading'>Featured Projects</h2>
+          <p className='featured-projects-heading'>Featured Projects</p>
         )}
         <div className='project-tiles-container'>
           {projects.map((project) => (
