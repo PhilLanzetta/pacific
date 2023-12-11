@@ -881,7 +881,17 @@ PROJECTS
 .tag-container button {
   padding-right: var(--spacing-sm);
   padding-bottom: var(--spacing-xs);
+  position: relative;
   transition: all 400ms;
+}
+
+.tag-container button::before {
+  content: '';
+  height: calc(100% + var(--spacing-xs));
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
 }
 
 .tag-container button:first-of-type {
