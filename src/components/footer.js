@@ -24,7 +24,7 @@ const Footer = () => {
           <p>@pacific_pacific</p>
         </a>
         <a
-          href='https://www.linkedin.com/pacific_pacific'
+          href='https://www.linkedin.com/company/pacificpacific/'
           target='_blank'
           rel='noreferrer'
         >
