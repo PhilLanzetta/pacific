@@ -52,10 +52,7 @@ const Index = ({ data }) => {
         </Fade>
       </div>
       <div className='featured-container'>
-        <Fade triggerOnce>
-          <h2>Publications</h2>
           <Carousel data={featuredPublications} slideCount={2.75}></Carousel>
-        </Fade>
       </div>
       <div className='featured-container'>
         <Fade triggerOnce>
@@ -68,10 +65,7 @@ const Index = ({ data }) => {
         </Fade>
       </div>
       <div className='featured-container'>
-        <Fade triggerOnce>
-          <h2>Shop</h2>
           <ShopCarousel data={featuredProducts} slideCount={3}></ShopCarousel>
-        </Fade>
       </div>
       <div className='featured-container'>
         <Fade triggerOnce>

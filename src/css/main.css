@@ -1121,6 +1121,22 @@ Home
   text-align: left;
 }
 
+.pub-carousel-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pub-arrows-container {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.pub-arrow svg {
+  height: 30px;
+  width: 30px;
+}
+
 .prev-button,
 .next-button {
   position: absolute;
