@@ -39,6 +39,8 @@ const VideoModule = ({ content }) => {
           playsinline
           loop
           muted={isMuted}
+          volume={1}
+          onPause={() => setIsPlaying(false)}
         ></ReactPlayer>
         {isPlaying && (
           <AnimatePresence>

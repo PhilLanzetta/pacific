@@ -23,7 +23,9 @@ const ShopCarousel = ({ data, slideCount }) => {
 
   return (
     <Fade triggerOnce>
-      <h2>Shop</h2>
+      <Link to='/collections/everything'>
+        <h2>Shop</h2>
+      </Link>
       <Slider {...settings} className='featured-news-container'>
         {data.map((product) => {
           const { featuredImage, handle, id, priceRangeV2, metafields } =

@@ -522,6 +522,7 @@ Case Study
 .text-header {
   padding: 3vw;
   text-align: center;
+  padding-top: calc(3vw + 90px);
 }
 
 .text-header h1 {
@@ -792,6 +793,10 @@ CASE STUDY MEDIA
   .header-image-with-text,
   .text-header {
     margin-bottom: 0;
+  }
+
+  .text-header {
+    padding-bottom: 60px;
   }
 
   .module-text-container,
@@ -1108,6 +1113,19 @@ Home
   flex-direction: column;
   align-items: center;
   text-align: center;
+}
+
+.featured-product-container a:hover {
+  opacity: 1;
+}
+
+.featured-product-container a:hover .featured-product-info {
+  opacity: var(--less-opacity);
+  transition: all var(--fast-transition);
+}
+
+.featured-product-info {
+  transition: all var(--fast-transition);
 }
 
 .featured-product-info {

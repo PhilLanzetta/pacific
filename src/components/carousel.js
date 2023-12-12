@@ -28,7 +28,9 @@ const Carousel = ({ data, slideCount }) => {
   return (
     <>
       <div className='pub-carousel-heading'>
-        <h2>Publications</h2>
+        <Link to='/projects' state={{ tag: ['Discipline: Publications'] }}>
+          <h2>Recent Publications</h2>
+        </Link>
         {width > 600 && (
           <div className='pub-arrows-container'>
             <button
@@ -50,19 +52,17 @@ const Carousel = ({ data, slideCount }) => {
       </div>
       <Slider {...settings} ref={slideRef}>
         {data.map((pub) => (
-          <Link
-            to={`/projects/${pub.caseStudy.slug}`}
-            key={pub.id}
-            className='carousel-link'
-          >
+          <div key={pub.id} className='carousel-link'>
             <GatsbyImage
               className='carousel-image'
               image={pub.featuredImage.gatsbyImageData}
               alt={pub.featuredImage.description}
             ></GatsbyImage>
-            <p className='carousel-title'>{pub.caseStudy.title}</p>
-            <p className='carousel-subtitle'>{pub.caseStudy.subtitle}</p>
-          </Link>
+            <Link to={`/projects/${pub.caseStudy.slug}`}>
+              <p className='carousel-title'>{pub.caseStudy.title}</p>
+              <p className='carousel-subtitle'>{pub.caseStudy.subtitle}</p>
+            </Link>
+          </div>
         ))}
       </Slider>
     </>

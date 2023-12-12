@@ -12,7 +12,6 @@ const HomeHero = () => {
   `)
   const [width, setWidth] = useState('100vw')
   const [height, setHeight] = useState('100vh')
-  const [videoPlay, setVideoPlay] = useState(false)
 
   useEffect(() => {
     setWidth(window.innerWidth)
@@ -21,8 +20,12 @@ const HomeHero = () => {
 
   useEffect(() => {
     const handleWindowResize = () => {
-      setWidth(window.innerWidth)
-      setHeight(window.innerHeight)
+      if (window.innerWidth > 600) {
+        setWidth(window.innerWidth)
+        setHeight(window.innerHeight)
+      } else {
+        setWidth(window.innerWidth)
+      }
     }
     window.addEventListener('resize', handleWindowResize)
 
@@ -45,7 +48,6 @@ const HomeHero = () => {
           style={{ height: height, width: width }}
         >
           <iframe
-            onPlay={() => setVideoPlay(true)}
             style={
               height / width >= 1.77
                 ? { minHeight: height, minWidth: minVerticalWidth }
@@ -61,7 +63,6 @@ const HomeHero = () => {
           style={{ height: height, width: width }}
         >
           <iframe
-            onPlay={() => setVideoPlay(true)}
             style={
               height / width >= 0.56
                 ? { minHeight: height, minWidth: minHorizontalWidth }

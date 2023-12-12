@@ -43,7 +43,9 @@ const Index = ({ data }) => {
       </div>
       <div className='featured-container'>
         <Fade triggerOnce>
-          <h2>Featured Projects</h2>
+          <Link to='/projects'>
+            <h2>Featured Projects</h2>
+          </Link>
           <div className='featured-tile-container'>
             {featuredProjects.map((project) => (
               <FeaturedTile key={project.id} project={project}></FeaturedTile>
@@ -66,12 +68,14 @@ const Index = ({ data }) => {
           </div>
         </Fade>
       </div>
-      <div className='featured-container'>
+      <div className='featured-container featured-product-container'>
         <ShopCarousel data={featuredProducts} slideCount={3}></ShopCarousel>
       </div>
       <div className='featured-container'>
         <Fade triggerOnce>
-          <h2>News</h2>
+          <Link to='/news'>
+            <h2>News</h2>
+          </Link>
           <NewsCarousel data={featuredNews} slideCount={3}></NewsCarousel>
         </Fade>
       </div>
