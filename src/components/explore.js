@@ -47,7 +47,9 @@ const Explore = () => {
               state={{ tag: [tag.name] }}
               className='explore-tag-link'
             >
-              {tag.name.split(': ')[1].length && tag.name.split(': ')[1]}
+              {tag.name.split(': ')[1] && (
+                <span>{tag.name.split(': ')[1]}</span>
+              )}
             </Link>
           ))}
         </div>
