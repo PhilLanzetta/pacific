@@ -41,17 +41,20 @@ const Explore = () => {
       <Fade triggerOnce>
         <h2>Explore Our Website</h2>
         <div className='explore-tag-container'>
-          {randomTags.map((tag) => (
-            <Link
-              to='/projects'
-              state={{ tag: [tag.name] }}
-              className='explore-tag-link'
-            >
-              {tag.name.split(': ')[1] && (
-                <span>{tag.name.split(': ')[1]}</span>
-              )}
-            </Link>
-          ))}
+          {randomTags.map((tag, index) => {
+            if (tag.name.split(': ')[1]) {
+              return (
+                <Link
+                  to='/projects'
+                  key={index}
+                  state={{ tag: [tag.name] }}
+                  className='explore-tag-link'
+                >
+                  {tag.name.split(': ')[1]}
+                </Link>
+              )
+            } else return null
+          })}
         </div>
       </Fade>
     </div>
