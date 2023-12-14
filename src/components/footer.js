@@ -57,7 +57,7 @@ const Footer = () => {
           rel='noreferrer'
         >
           <p>70 Flushing Avenue,</p>
-          <p>Brooklyn, NY, 11222, USA</p>
+          <p>Brooklyn, NY, 11205, USA</p>
         </a>
       </div>
       <img src={Logo} alt='Pacific' className='footer-logo' />

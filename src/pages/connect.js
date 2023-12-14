@@ -19,7 +19,7 @@ const Connect = () => {
               >
                 New York <br />
                 70 Flushing Avenue <br />
-                Brooklyn, NY 11222
+                Brooklyn, NY 11205
               </a>
             </div>
             <div>
