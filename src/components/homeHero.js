@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import { AnimatePresence, motion } from 'framer-motion'
-import { IoPlayCircleOutline } from 'react-icons/io5'
 
 const HomeHero = () => {
   const data = useStaticQuery(graphql`
@@ -14,8 +12,6 @@ const HomeHero = () => {
   `)
   const [width, setWidth] = useState('100vw')
   const [height, setHeight] = useState('100vh')
-  const [isPlaying, setIsPlaying] = useState(true)
-  const videoRef = useRef(null)
 
   useEffect(() => {
     setWidth(window.innerWidth)
@@ -59,9 +55,6 @@ const HomeHero = () => {
             }
             src={`${data.contentfulHomePage.homeVideoPortrait}?autoplay=1&muted=1&playsinline=1&controls=0&loop=1&autopause=0`}
             title='Pacific reel'
-            onPause={() => setIsPlaying(false)}
-            onPlay={() => setIsPlaying(true)}
-            ref={videoRef}
           />
         </div>
       ) : (
@@ -77,26 +70,9 @@ const HomeHero = () => {
             }
             src={`${data.contentfulHomePage.homeVideoLandscape}?autoplay=1&muted=1&playsinline=1&controls=0&loop=1&autopause=0`}
             title='Pacific reel'
-            onPause={() => setIsPlaying(false)}
-            onPlay={() => setIsPlaying(true)}
-            ref={videoRef}
           />
         </div>
       )}
-      <AnimatePresence>
-        {!isPlaying && (
-          <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => {
-              videoRef.current.play()
-            }}
-          >
-            <IoPlayCircleOutline className='video-module-control video-module-play'></IoPlayCircleOutline>
-          </motion.button>
-        )}
-      </AnimatePresence>
     </div>
   )
 }
