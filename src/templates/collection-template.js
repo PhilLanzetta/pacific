@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Layout from '../components/layout'
 import ProductTile from '../components/productTile'
+import Seo from '../components/seo'
 
 const CollectionTemplate = ({ data, location }) => {
   const products = data.shopifyCollection.products
@@ -89,5 +90,7 @@ export const query = graphql`
     }
   }
 `
+
+export const Head = () => <Seo title='Shop' />
 
 export default CollectionTemplate

@@ -5,6 +5,7 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import useWindowSize from '../utils/useWindowSize'
 import useStore from '../context/StoreContext'
 import RelatedProducts from '../components/relatedProducts'
+import Seo from '../components/seo'
 
 const ProductPage = ({ location, data }) => {
   const { width } = useWindowSize()
@@ -182,5 +183,6 @@ export const query = graphql`
     }
   }
 `
+export const Head = ({ data }) => <Seo title={data.shopifyProduct.title} />
 
 export default ProductPage

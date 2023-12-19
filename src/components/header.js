@@ -4,6 +4,7 @@ import HideOnScroll from './hideOnScroll'
 import Cart from './cart'
 import useStore from '../context/StoreContext'
 import Logo from '../images/logo.svg'
+import { AnimatePresence } from 'framer-motion'
 
 const Header = ({ location, setTags }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -19,7 +20,9 @@ const Header = ({ location, setTags }) => {
       <header>
         <div></div>
         <HideOnScroll>
-          <Link to='/'><img src={Logo} alt="Pacific"></img></Link>
+          <Link to='/'>
+            <img src={Logo} alt='Pacific'></img>
+          </Link>
         </HideOnScroll>
         {showCart && (
           <div className='shop-cart'>
@@ -134,9 +137,11 @@ const Header = ({ location, setTags }) => {
           </div>
         </div>
       </header>
-      {isCartOpen && (
-        <Cart toggleCart={() => setIsCartOpen(!isCartOpen)}></Cart>
-      )}
+      <AnimatePresence>
+        {isCartOpen && (
+          <Cart toggleCart={() => setIsCartOpen(!isCartOpen)}></Cart>
+        )}
+      </AnimatePresence>
     </>
   )
 }

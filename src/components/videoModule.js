@@ -42,8 +42,8 @@ const VideoModule = ({ content }) => {
           volume={1}
           onPause={() => setIsPlaying(false)}
         ></ReactPlayer>
-        {isPlaying && (
-          <AnimatePresence>
+        <AnimatePresence>
+          {isPlaying && (
             <motion.button
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -55,10 +55,10 @@ const VideoModule = ({ content }) => {
             >
               <IoMdPause className='video-module-control video-module-pause'></IoMdPause>
             </motion.button>
-          </AnimatePresence>
-        )}
-        {!isPlaying && (
-          <AnimatePresence>
+          )}
+        </AnimatePresence>
+        <AnimatePresence>
+          {!isPlaying && (
             <motion.button
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -69,10 +69,10 @@ const VideoModule = ({ content }) => {
             >
               <IoPlayCircleOutline className='video-module-control video-module-play'></IoPlayCircleOutline>
             </motion.button>
-          </AnimatePresence>
-        )}
-        {isMuted && (
-          <AnimatePresence>
+          )}
+        </AnimatePresence>
+        <AnimatePresence>
+          {isMuted && (
             <motion.button
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -83,10 +83,10 @@ const VideoModule = ({ content }) => {
             >
               <IoVolumeHighSharp className='video-module-control video-module-volume'></IoVolumeHighSharp>
             </motion.button>
-          </AnimatePresence>
-        )}
-        {!isMuted && (
-          <AnimatePresence>
+          )}
+        </AnimatePresence>
+        <AnimatePresence>
+          {!isMuted && (
             <motion.button
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -97,8 +97,8 @@ const VideoModule = ({ content }) => {
             >
               <IoVolumeMuteSharp className='video-module-control video-module-volume'></IoVolumeMuteSharp>
             </motion.button>
-          </AnimatePresence>
-        )}
+          )}
+        </AnimatePresence>
       </div>
     </div>
   )

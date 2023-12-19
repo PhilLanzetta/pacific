@@ -1,5 +1,6 @@
 import React from 'react'
 import Layout from '../components/layout'
+import Seo from '../components/seo'
 
 const Privacy = () => {
   return (
@@ -100,5 +101,7 @@ const Privacy = () => {
     </Layout>
   )
 }
+
+export const Head = () => <Seo title='Privacy' />
 
 export default Privacy

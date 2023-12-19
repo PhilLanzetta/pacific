@@ -1,5 +1,6 @@
 import React from 'react'
 import Layout from '../components/layout'
+import Seo from '../components/seo'
 
 const Shipping = () => {
   return (
@@ -27,5 +28,7 @@ const Shipping = () => {
     </Layout>
   )
 }
+
+export const Head = () => <Seo title='Shipping' />
 
 export default Shipping

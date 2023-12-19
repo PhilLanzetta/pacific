@@ -574,6 +574,7 @@ Case Study
   width: calc(25% - 3vw);
   left: var(--primary-margin);
   top: var(--spacing-lg);
+  padding-right: var(--spacing-sm);
   z-index: 1000;
 }
 
