@@ -27,8 +27,8 @@ const Connect = () => {
               <div className='connect-text-grouping'>
                 <div className='connect-two-column'>
                   <p>General</p>
-                  <a href='mailto:businesspacificpacific.pub'>
-                    businesspacificpacific.pub
+                  <a href='mailto:studio@pacificpacific.pub'>
+                    studio@pacificpacific.pub
                   </a>
                 </div>
                 <div className='connect-two-column'>
@@ -39,8 +39,8 @@ const Connect = () => {
                 </div>
                 <div className='connect-two-column'>
                   <p>New Business</p>
-                  <a href='mailto:studio@pacificpacific.pub'>
-                    studio@pacificpacific.pub
+                  <a href='mailto:business@pacificpacific.pub'>
+                    business@pacificpacific.pub
                   </a>
                 </div>
                 <div className='connect-two-column'>
