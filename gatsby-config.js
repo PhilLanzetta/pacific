@@ -53,5 +53,14 @@ module.exports = {
         shopifyConnections: ['collections'],
       },
     },
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: ['G-ZSRFB0S9ZM'],
+        pluginConfig: {
+          head: true,
+        },
+      },
+    },
   ],
 }
