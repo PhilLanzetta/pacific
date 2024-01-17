@@ -10,13 +10,17 @@ const Projects = ({ data, location }) => {
   const featuredProjects = data.allContentfulCaseStudy.nodes.filter(
     (node) => node.isFeatured === true
   )
-  const disciplineTags = data.allContentfulTag.nodes
-    .filter((node) => node.name.includes('Discipline'))
-    .map((node) => node.name)
+  const [disciplineTags, setDisciplineTags] = useState(
+    data.allContentfulTag.nodes
+      .filter((node) => node.name.includes('Discipline'))
+      .map((node) => node.name)
+  )
 
-  const industryTags = data.allContentfulTag.nodes
-    .filter((node) => node.name.includes('Industry'))
-    .map((node) => node.name)
+  const [industryTags, setIndustryTags] = useState(
+    data.allContentfulTag.nodes
+      .filter((node) => node.name.includes('Industry'))
+      .map((node) => node.name)
+  )
 
   const [projects, setProjects] = useState(featuredProjects)
   const [filterCat, setFilterCat] = useState('D')
@@ -44,6 +48,16 @@ const Projects = ({ data, location }) => {
       })
       setProjects(result)
       navigate(`/projects?filters=${tags.join('-')}`)
+      setDisciplineTags(
+        data.allContentfulTag.nodes
+          .filter((node) => node.name.includes('Discipline'))
+          .map((node) => node.name)
+      )
+      setIndustryTags(
+        data.allContentfulTag.nodes
+          .filter((node) => node.name.includes('Industry'))
+          .map((node) => node.name)
+      )
     }
     if (userClick && tags.length < 1) {
       setProjects(allProjects)
