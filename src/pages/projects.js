@@ -35,6 +35,7 @@ const Projects = ({ data, location }) => {
 
   useEffect(() => {
     if (tags.length) {
+      setUserClick(true)
       const result = allProjects.filter((project) => {
         const projectTags = project.metadata.tags.map((tag) =>
           tag.name.split(': ')[1].replaceAll(' & ', '').replaceAll(' ', '')
@@ -43,11 +44,9 @@ const Projects = ({ data, location }) => {
       })
       setProjects(result)
       navigate(`/projects?filters=${tags.join('-')}`)
-      setUserClick(true)
     }
     if (userClick && tags.length < 1) {
       setProjects(allProjects)
-      console.log('this ran')
       navigate('/projects/')
     }
     if (!userClick) {
