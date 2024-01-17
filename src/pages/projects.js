@@ -18,14 +18,13 @@ const Projects = ({ data, location }) => {
     .filter((node) => node.name.includes('Industry'))
     .map((node) => node.name)
 
-  const topicTags = data.allContentfulTag.nodes
-    .filter((node) => node.name.includes('Topic'))
-    .map((node) => node.name)
-
   const [projects, setProjects] = useState(featuredProjects)
   const [filterCat, setFilterCat] = useState('D')
-  const [tags, setTags] = useState(location.state?.tag || [])
+  const [tags, setTags] = useState(
+    location.search?.split('=')[1]?.split('-') || []
+  )
   const [userClick, setUserClick] = useState(false)
+  const params = new URL('https://www.pacificpacific.pub/projects/')
 
   const handleTagClick = (newTag) => {
     if (tags.includes(newTag)) {
@@ -38,10 +37,14 @@ const Projects = ({ data, location }) => {
   useEffect(() => {
     if (tags.length) {
       const result = allProjects.filter((project) => {
-        const projectTags = project.metadata.tags.map((tag) => tag.name)
+        const projectTags = project.metadata.tags.map((tag) =>
+          tag.name.split(': ')[1].replaceAll(' & ', '')
+        )
         return tags.some((value) => projectTags.includes(value))
       })
       setProjects(result)
+      params.searchParams.set('filters', tags.join('-'))
+      window.history.pushState({}, '', params)
       setUserClick(true)
     }
     if (userClick && tags.length === 0) {
@@ -56,36 +59,47 @@ const Projects = ({ data, location }) => {
     <Layout location={location} setTags={setTags}>
       <div className='filter-container'>
         <div className='filter-categories'>
-            <button
-              onClick={() => setFilterCat('D')}
-              className={filterCat === 'D' ? 'filter-category-active' : 'filter-category-button'}
-            >
-              Discipline
-            </button>{' '}
-            /{' '}
-            <button
-              onClick={() => setFilterCat('I')}
-              className={filterCat === 'I' ? 'filter-category-active' : 'filter-category-button'}
-            >
-              Industry
-            </button>{' '}
+          <button
+            onClick={() => {
+              setFilterCat('D')
+            }}
+            className={
+              filterCat === 'D'
+                ? 'filter-category-active'
+                : 'filter-category-button'
+            }
+          >
+            Discipline
+          </button>{' '}
+          /{' '}
+          <button
+            onClick={() => setFilterCat('I')}
+            className={
+              filterCat === 'I'
+                ? 'filter-category-active'
+                : 'filter-category-button'
+            }
+          >
+            Industry
+          </button>{' '}
         </div>
         {filterCat === 'D' && (
           <div className='tag-container'>
             Tags:{' '}
             {disciplineTags.map((tag, index) => {
               const discipline = tag.split(': ')[1]
+              const cleanTag = discipline.replaceAll(' & ', '')
               return (
                 <button
                   key={index}
                   className={
                     tags.length > 0
-                      ? tags.includes(tag)
+                      ? tags.includes(cleanTag)
                         ? 'active-filter-button'
                         : 'non-active-filter-button'
                       : ''
                   }
-                  onClick={() => handleTagClick(tag)}
+                  onClick={() => handleTagClick(cleanTag)}
                 >
                   {discipline}
                 </button>
@@ -98,28 +112,14 @@ const Projects = ({ data, location }) => {
             Tags:{' '}
             {industryTags.map((tag, index) => {
               const discipline = tag.split(': ')[1]
+              const cleanTag = discipline.replaceAll(' & ', '')
               return (
                 <button
                   key={index}
-                  className={tags.includes(tag) ? 'active-filter-button' : ''}
-                  onClick={() => handleTagClick(tag)}
-                >
-                  {discipline}
-                </button>
-              )
-            })}
-          </div>
-        )}
-        {filterCat === 'T' && (
-          <div className='tag-container'>
-            Tags:{' '}
-            {topicTags.map((tag, index) => {
-              const discipline = tag.split(': ')[1]
-              return (
-                <button
-                  key={index}
-                  className={tags.includes(tag) ? 'active-filter-button' : ''}
-                  onClick={() => handleTagClick(tag)}
+                  className={
+                    tags.includes(cleanTag) ? 'active-filter-button' : ''
+                  }
+                  onClick={() => handleTagClick(cleanTag)}
                 >
                   {discipline}
                 </button>

@@ -13,6 +13,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-image`,
     `gatsby-transformer-remark`,
+    `gatsby-plugin-use-query-params`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
