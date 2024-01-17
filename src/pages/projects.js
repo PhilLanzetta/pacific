@@ -24,7 +24,7 @@ const Projects = ({ data, location }) => {
     location.search?.split('=')[1]?.split('-') || []
   )
   const [userClick, setUserClick] = useState(false)
-  const params = new URL('https://www.pacificpacific.pub/projects/')
+  const params = new URL('https://www.pacificpacific.pub/projects')
 
   const handleTagClick = (newTag) => {
     if (tags.includes(newTag)) {
