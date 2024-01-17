@@ -79,6 +79,7 @@ const Header = ({ location, setTags }) => {
                 <button
                   onClick={() => {
                     navigate('/projects/?filters=Publications')
+                    setTags(['Publications'])
                     setIsOpen(false)
                   }}
                 >
