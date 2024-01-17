@@ -78,8 +78,7 @@ const Header = ({ location, setTags }) => {
               {isProjectPage ? (
                 <button
                   onClick={() => {
-                    setTags(['Discipline: Publications'])
-                    navigate('/projects')
+                    navigate('/projects/?filters=Publications')
                     setIsOpen(false)
                   }}
                 >
@@ -87,8 +86,7 @@ const Header = ({ location, setTags }) => {
                 </button>
               ) : (
                 <Link
-                  to='/projects'
-                  state={{ tag: ['Discipline: Publications'] }}
+                  to='/projects/?filter=Publications'
                   onClick={() => setIsOpen(false)}
                 >
                   Publications

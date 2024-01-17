@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Layout from '../components/layout'
-import { graphql, Link } from 'gatsby'
+import { graphql, Link, navigate } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import Seo from '../components/seo'
 import { Fade } from 'react-awesome-reveal'
@@ -24,7 +24,6 @@ const Projects = ({ data, location }) => {
     location.search?.split('=')[1]?.split('-') || []
   )
   const [userClick, setUserClick] = useState(false)
-  const params = new URL('https://www.pacificpacific.pub/projects')
 
   const handleTagClick = (newTag) => {
     if (tags.includes(newTag)) {
@@ -38,17 +37,18 @@ const Projects = ({ data, location }) => {
     if (tags.length) {
       const result = allProjects.filter((project) => {
         const projectTags = project.metadata.tags.map((tag) =>
-          tag.name.split(': ')[1].replaceAll(' & ', '')
+          tag.name.split(': ')[1].replaceAll(' & ', '').replaceAll(' ', '')
         )
         return tags.some((value) => projectTags.includes(value))
       })
       setProjects(result)
-      params.searchParams.set('filters', tags.join('-'))
-      window.history.pushState({}, '', params)
+      navigate(`/projects?filters=${tags.join('-')}`)
       setUserClick(true)
     }
-    if (userClick && tags.length === 0) {
+    if (userClick && tags.length < 1) {
       setProjects(allProjects)
+      console.log('this ran')
+      navigate('/projects/')
     }
     if (!userClick) {
       return
@@ -88,7 +88,9 @@ const Projects = ({ data, location }) => {
             Tags:{' '}
             {disciplineTags.map((tag, index) => {
               const discipline = tag.split(': ')[1]
-              const cleanTag = discipline.replaceAll(' & ', '')
+              const cleanTag = discipline
+                .replaceAll(' & ', '')
+                .replaceAll(' ', '')
               return (
                 <button
                   key={index}
@@ -112,7 +114,9 @@ const Projects = ({ data, location }) => {
             Tags:{' '}
             {industryTags.map((tag, index) => {
               const discipline = tag.split(': ')[1]
-              const cleanTag = discipline.replaceAll(' & ', '')
+              const cleanTag = discipline
+                .replaceAll(' & ', '')
+                .replaceAll(' ', '')
               return (
                 <button
                   key={index}
