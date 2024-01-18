@@ -113,8 +113,10 @@ const CaseStudy = ({ data }) => {
                     {disciplineTags.map((tag, index) => (
                       <Link
                         key={index}
-                        to='/projects'
-                        state={{ tag: [tag.name] }}
+                        to={`/projects/?filter=${tag.name
+                          .split(': ')[1]
+                          .replaceAll(' & ', '')
+                          .replaceAll(' ', '')}`}
                       >
                         {tag.name.split(': ')[1]}
                       </Link>
