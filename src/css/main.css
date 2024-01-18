@@ -43,7 +43,7 @@
   --font-xlg-resp: clamp(36px, calc(1rem + 5.5vw), 300px);
   --font-lg-resp: clamp(36px, calc(1rem + 2.5vw), 100px);
   --font-md-resp: calc(1rem + 1vw);
-  --font-sm-resp: clamp(8px, calc(0.75rem + 0.5vw), 18px);
+  --font-sm-resp: clamp(10px, calc(0.75rem + 0.75vw), 20px);
   --font-xs-resp: clamp(12px, calc(0.5rem + 0.25vw), 16px);
   --spacing-lg: 4rem;
   --spacing-md: 2rem;
@@ -574,7 +574,7 @@ Case Study
   width: calc(25% - 3vw);
   left: var(--primary-margin);
   top: var(--spacing-lg);
-  padding-right: var(--spacing-sm);
+  padding-right: var(--spacing-md);
   z-index: 1000;
 }
 

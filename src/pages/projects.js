@@ -83,7 +83,7 @@ const Projects = ({ data, location }) => {
           </button>{' '}
         </div>
         {filterCat === 'D' && (
-          <div className='tag-container'>
+          <div className='tag-container' key={tags.length}>
             Tags:{' '}
             {disciplineTags.map((tag, index) => {
               const discipline = tag.split(': ')[1]
@@ -107,7 +107,7 @@ const Projects = ({ data, location }) => {
           </div>
         )}
         {filterCat === 'I' && (
-          <div className='tag-container'>
+          <div className='tag-container' key={tags.length}>
             Tags:{' '}
             {industryTags.map((tag, index) => {
               const discipline = tag.split(': ')[1]

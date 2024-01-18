@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, graphql, useStaticQuery } from 'gatsby'
 import { Fade } from 'react-awesome-reveal'
 
@@ -13,6 +13,10 @@ const Explore = () => {
       }
     }
   `)
+
+  const [randomTags, setRandomTags] = useState(
+    data.allContentfulTag.nodes.slice(0, 20)
+  )
 
   const shuffleData = (array) => {
     let currentIndex = array.length,
@@ -34,7 +38,10 @@ const Explore = () => {
     return array
   }
 
-  const randomTags = shuffleData(data.allContentfulTag.nodes).slice(0, 20)
+  useEffect(() => {
+    const randomData = shuffleData(data.allContentfulTag.nodes).slice(0, 20)
+    setRandomTags(randomData)
+  }, [])
 
   return (
     <div className='explore-container'>
@@ -45,9 +52,11 @@ const Explore = () => {
             if (tag.name.split(': ')[1]) {
               return (
                 <Link
-                  to='/projects'
+                  to={`/projects/?filter=${tag.name
+                    .split(': ')[1]
+                    .replaceAll(' & ', '')
+                    .replaceAll(' ', '')}`}
                   key={index}
-                  state={{ tag: [tag.name] }}
                   className='explore-tag-link'
                 >
                   {tag.name.split(': ')[1]}
