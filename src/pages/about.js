@@ -79,6 +79,7 @@ const About = ({ data }) => {
     selectClients,
     studioImages,
     collections,
+    publishing,
     talksLectures,
   } = data.contentfulAboutPage
 
@@ -111,6 +112,15 @@ const About = ({ data }) => {
           <div
             dangerouslySetInnerHTML={{
               __html: aboutText.childMarkdownRemark.html,
+            }}
+            className='about-text'
+          ></div>
+        </div>
+        <div>
+          <h2 className='about-section-title'>Publishing</h2>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: publishing.childMarkdownRemark.html,
             }}
             className='about-text'
           ></div>
@@ -266,6 +276,11 @@ export const query = graphql`
   query {
     contentfulAboutPage {
       aboutText {
+        childMarkdownRemark {
+          html
+        }
+      }
+      publishing {
         childMarkdownRemark {
           html
         }
