@@ -1,21 +1,25 @@
 import React from 'react'
-import Layout from '../components/layout'
+import Layout from '../../components/layout'
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import Seo from '../components/seo'
+import Seo from '../../components/seo'
 import { Fade } from 'react-awesome-reveal'
 
-const Publishing = ({ data, location }) => {
-  const publishing = data.allContentfulCaseStudy.nodes.filter((node) => {
-    console.log(node)
-    const nodeTags = node.metadata.tags.map((tag) => tag.name)
-    return nodeTags.includes('Discipline: Publishing')
-  })
+const Imprint = ({ data, location }) => {
+  const publishing = data.allContentfulCaseStudy.nodes.filter(
+    (node) => node.publishedByPacific
+  )
 
   return (
     <Layout location={location}>
-      <div className='filter-container'>
-        Publishing: <em>Design Imprint</em>
+      <h1 className='product-page-title'>Publishing</h1>
+      <div className='product-tag-container'>
+        <Link to='/publishing' activeClassName='active-filter-button'>
+          Design
+        </Link>
+        <Link to='/publishing/imprint' activeClassName='active-filter-button'>
+          Imprint
+        </Link>
       </div>
       <div className='projects-container'>
         <div className='project-tiles-container'>
@@ -43,7 +47,10 @@ const Publishing = ({ data, location }) => {
 
 export const query = graphql`
   query {
-    allContentfulCaseStudy(sort: { order: DESC }) {
+    allContentfulCaseStudy(
+      filter: { category: { eq: "Publishing" } }
+      sort: { order: DESC }
+    ) {
       nodes {
         id
         tileImage {
@@ -56,6 +63,7 @@ export const query = graphql`
         isFeatured
         subtitle
         title
+        publishedByPacific
         metadata {
           tags {
             name
@@ -73,4 +81,4 @@ export const query = graphql`
 
 export const Head = () => <Seo title='Publishing' />
 
-export default Publishing
+export default Imprint

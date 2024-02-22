@@ -1,24 +1,27 @@
 import React from 'react'
-import Layout from '../components/layout'
+import Layout from '../../components/layout'
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import Seo from '../components/seo'
+import Seo from '../../components/seo'
 import { Fade } from 'react-awesome-reveal'
 
-const Studio = ({ data, location }) => {
-  const caseStudy = data.allContentfulCaseStudy.nodes
+const Publishing = ({ data, location }) => {
+  const publishing = data.allContentfulCaseStudy.nodes
 
   return (
     <Layout location={location}>
-      <h1 className='product-page-title'>Studio</h1>
+      <h1 className='product-page-title'>Publishing</h1>
       <div className='product-tag-container'>
-        <Link to='/studio' activeClassName='active-filter-button'>
-          Case Studies
+        <Link to='/publishing' activeClassName='active-filter-button'>
+          Design
+        </Link>
+        <Link to='/publishing/imprint' activeClassName='active-filter-button'>
+          Imprint
         </Link>
       </div>
       <div className='projects-container'>
         <div className='project-tiles-container'>
-          {caseStudy.map((project) => (
+          {publishing.map((project) => (
             <Fade className='project-tile' triggerOnce={true} key={project.id}>
               <Link to={`/studio/${project.slug}`}>
                 {project.tileImage && (
@@ -43,7 +46,7 @@ const Studio = ({ data, location }) => {
 export const query = graphql`
   query {
     allContentfulCaseStudy(
-      filter: { category: { eq: "Case Study" } }
+      filter: { category: { eq: "Publishing" } }
       sort: { order: DESC }
     ) {
       nodes {
@@ -73,6 +76,6 @@ export const query = graphql`
   }
 `
 
-export const Head = () => <Seo title='Studio' />
+export const Head = () => <Seo title='Publishing' />
 
-export default Studio
+export default Publishing
