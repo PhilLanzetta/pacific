@@ -213,7 +213,6 @@ const CaseStudy = ({ data }) => {
         )}
       </div>
       <Related currentProjectSlug={slug} tags={relatedTags}></Related>
-      <Explore></Explore>
     </Layout>
   )
 }

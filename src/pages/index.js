@@ -79,7 +79,6 @@ const Index = ({ data }) => {
           <NewsCarousel data={featuredNews} slideCount={3}></NewsCarousel>
         </Fade>
       </div>
-      <Explore></Explore>
     </Layout>
   )
 }
