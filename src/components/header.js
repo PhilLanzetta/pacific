@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, navigate } from 'gatsby'
+import { Link } from 'gatsby'
 import HideOnScroll from './hideOnScroll'
 import Cart from './cart'
 import useStore from '../context/StoreContext'
@@ -9,7 +9,6 @@ import { AnimatePresence } from 'framer-motion'
 const Header = ({ location, setTags }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [isCartOpen, setIsCartOpen] = useState(false)
-  const isProjectPage = location?.pathname === '/projects/'
   const showCart =
     location?.pathname.includes('/shop/') ||
     location?.pathname.includes('/collections/')
@@ -60,39 +59,15 @@ const Header = ({ location, setTags }) => {
             className={`secondary-menu ${isOpen ? 'menu-show' : 'menu-hide'}`}
           >
             <div className='secondary-main'>
-              {isProjectPage ? (
-                <button
-                  onClick={() => {
-                    setTags([])
-                    navigate('/projects')
-                    setIsOpen(false)
-                  }}
-                >
-                  Projects
-                </button>
-              ) : (
-                <Link to='/projects' onClick={() => setIsOpen(false)}>
-                  Projects
+                <Link to='/studio' onClick={() => setIsOpen(false)}>
+                  Studio
                 </Link>
-              )}
-              {isProjectPage ? (
-                <button
-                  onClick={() => {
-                    navigate('/projects/?filters=Publications')
-                    setTags(['Publications'])
-                    setIsOpen(false)
-                  }}
-                >
-                  Publications
-                </button>
-              ) : (
                 <Link
-                  to='/projects/?filter=Publications'
+                  to='/publishing'
                   onClick={() => setIsOpen(false)}
                 >
-                  Publications
+                  Publishing
                 </Link>
-              )}
               {/* {isProjectPage ? (
                 <button
                   onClick={() => {

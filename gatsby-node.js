@@ -44,7 +44,7 @@ exports.createPages = async ({ actions, graphql }) => {
   caseStudies.forEach(({ node }) => {
     const caseStudySlug = node.slug
     createPage({
-      path: `/projects/${caseStudySlug}`,
+      path: `/studio/${caseStudySlug}`,
       component: require.resolve('./src/templates/case-study-template.js'),
       context: { slug: caseStudySlug },
     })

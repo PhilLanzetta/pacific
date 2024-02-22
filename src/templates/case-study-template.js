@@ -25,7 +25,6 @@ const CaseStudy = ({ data }) => {
   const { width } = useWindowSize()
   const isMobile = width < 1111
 
-  console.log(content)
   const primaryContent = [content[0]]
   const secondaryContent = content.slice(1)
 
@@ -104,26 +103,6 @@ const CaseStudy = ({ data }) => {
                   <p>{location}</p>
                 </div>
               )}
-              {disciplineTags?.length > 0 && (
-                <div>
-                  <p>
-                    <em>Scope</em>
-                  </p>
-                  <div className='case-study-tag-container'>
-                    {disciplineTags.map((tag, index) => (
-                      <Link
-                        key={index}
-                        to={`/projects/?filter=${tag.name
-                          .split(': ')[1]
-                          .replaceAll(' & ', '')
-                          .replaceAll(' ', '')}`}
-                      >
-                        {tag.name.split(': ')[1]}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
               {awards && (
                 <div>
                   <p>
@@ -189,24 +168,6 @@ const CaseStudy = ({ data }) => {
                     <em>Location</em>
                   </p>
                   <p>{location}</p>
-                </div>
-              )}
-              {disciplineTags?.length > 0 && (
-                <div>
-                  <p>
-                    <em>Scope</em>
-                  </p>
-                  <div className='case-study-tag-container'>
-                    {disciplineTags.map((tag, index) => (
-                      <Link
-                        key={index}
-                        to='/projects'
-                        state={{ tag: [tag.name] }}
-                      >
-                        {tag.name.split(': ')[1]}
-                      </Link>
-                    ))}
-                  </div>
                 </div>
               )}
               {awards && (
