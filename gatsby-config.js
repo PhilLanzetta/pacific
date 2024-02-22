@@ -12,6 +12,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-image`,
+    `gatsby-plugin-netlify`,
     `gatsby-transformer-remark`,
     `gatsby-plugin-use-query-params`,
     {
