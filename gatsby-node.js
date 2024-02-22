@@ -8,7 +8,7 @@
  * @type {import('gatsby').GatsbyNode['createPages']}
  */
 exports.createPages = async ({ actions, graphql }) => {
-  const { createPage, createRedirect } = actions
+  const { createPage } = actions
   const result = await graphql(`
     query GetData {
       allContentfulCaseStudy {
@@ -66,10 +66,5 @@ exports.createPages = async ({ actions, graphql }) => {
       component: require.resolve('./src/templates/collection-template.js'),
       context: { handle: collectionSlug },
     })
-  })
-
-  createRedirect({
-    fromPath: `/projects/*`,
-    toPath: `/studio/*`,
   })
 }
