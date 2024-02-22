@@ -28,7 +28,7 @@ const Carousel = ({ data, slideCount }) => {
   return (
     <>
       <div className='pub-carousel-heading'>
-        <Link to='/projects' state={{ tag: ['Discipline: Publications'] }}>
+        <Link to='/publishing'>
           <h2>Recent Publications</h2>
         </Link>
         {width > 600 && (
@@ -58,7 +58,7 @@ const Carousel = ({ data, slideCount }) => {
               image={pub.featuredImage.gatsbyImageData}
               alt={pub.featuredImage.description}
             ></GatsbyImage>
-            <Link to={`/projects/${pub.caseStudy.slug}`}>
+            <Link to={`/studio/${pub.caseStudy.slug}`}>
               <p className='carousel-title'>{pub.caseStudy.title}</p>
               <p className='carousel-subtitle'>{pub.caseStudy.subtitle}</p>
             </Link>

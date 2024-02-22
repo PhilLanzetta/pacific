@@ -6,7 +6,7 @@ import useStore from '../context/StoreContext'
 import Logo from '../images/logo.svg'
 import { AnimatePresence } from 'framer-motion'
 
-const Header = ({ location, setTags }) => {
+const Header = ({ location }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [isCartOpen, setIsCartOpen] = useState(false)
   const showCart =

@@ -47,7 +47,7 @@ const NewsItem = ({ item }) => {
           ></div>
           {item.associatedCaseStudy && (
             <Link
-              to={`/projects/${item.associatedCaseStudy.slug}`}
+              to={`/studio/${item.associatedCaseStudy.slug}`}
               className='news-view-project'
             >
               VIEW PROJECT <BsArrowRight></BsArrowRight>

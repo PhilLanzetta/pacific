@@ -43,8 +43,8 @@ const Index = ({ data }) => {
       </div>
       <div className='featured-container'>
         <Fade triggerOnce>
-          <Link to='/projects'>
-            <h2>Featured Projects</h2>
+          <Link to='/studio'>
+            <h2>Featured Case Studies</h2>
           </Link>
           <div className='featured-tile-container'>
             {featuredProjects.map((project) => (

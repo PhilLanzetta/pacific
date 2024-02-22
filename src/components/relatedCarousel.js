@@ -24,7 +24,7 @@ const RelatedCarousel = ({ data, slideCount }) => {
     <Slider {...settings}>
       {data.map((related) => (
         <Link
-          to={`/projects/${related.slug}`}
+          to={`/studio/${related.slug}`}
           key={related.id}
           className='featured-shop-link'
         >
