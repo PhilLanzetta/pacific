@@ -54,7 +54,7 @@ export class RelatedProjectsFactory {
       const tagPoint = 1
       const slug = getSlug(project)
 
-      project.metadata.tags
+      project.metadata?.tags
         .map((tag) => tag.name)
         .forEach((aTag) => {
           if (includes(tags, aTag)) {
