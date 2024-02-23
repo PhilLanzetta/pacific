@@ -29,10 +29,6 @@ const CaseStudy = ({ data }) => {
 
   const relatedTags = ['no tags']
 
-  const disciplineTags = metadata?.tags?.filter((tag) =>
-    tag.name.includes('Discipline')
-  )
-
   return (
     <Layout>
       <div className='case-study-page'>
