@@ -19,11 +19,6 @@ const Related = ({ currentProjectSlug, tags }) => {
               gatsbyImageData
             }
           }
-          metadata {
-            tags {
-              name
-            }
-          }
         }
       }
     }
