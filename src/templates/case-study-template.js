@@ -16,7 +16,6 @@ const CaseStudy = ({ data }) => {
     headerImage,
     content,
     headerText,
-    metadata,
     awards,
     slug,
     press,
@@ -28,10 +27,7 @@ const CaseStudy = ({ data }) => {
   const primaryContent = [content[0]]
   const secondaryContent = content.slice(1)
 
-  const relatedTags =
-    metadata?.tags?.length > 0
-      ? metadata.tags.map((tag) => tag.name)
-      : ['no tags']
+  const relatedTags = ['no tags']
 
   const disciplineTags = metadata?.tags?.filter((tag) =>
     tag.name.includes('Discipline')
@@ -226,11 +222,6 @@ export const query = graphql`
       location
       shopifyHandle
       client
-      metadata {
-        tags {
-          name
-        }
-      }
       awards {
         childMarkdownRemark {
           html

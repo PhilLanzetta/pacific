@@ -64,11 +64,6 @@ export const query = graphql`
         subtitle
         title
         publishedByPacific
-        metadata {
-          tags {
-            name
-          }
-        }
       }
     }
     allContentfulTag(sort: { name: ASC }) {

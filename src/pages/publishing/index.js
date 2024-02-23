@@ -61,11 +61,6 @@ export const query = graphql`
         isFeatured
         subtitle
         title
-        metadata {
-          tags {
-            name
-          }
-        }
       }
     }
     allContentfulTag(sort: { name: ASC }) {
