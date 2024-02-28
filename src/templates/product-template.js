@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Layout from '../components/layout'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import useWindowSize from '../utils/useWindowSize'
 import useStore from '../context/StoreContext'
@@ -47,6 +47,9 @@ const ProductPage = ({ location, data }) => {
 
   return (
     <Layout location={location}>
+      <Link to='/collections/everything/'>
+        <h1 className='product-page-title individual-product'>Shop</h1>
+      </Link>
       <div className='product-page-container'>
         {isMobile ? (
           <div className='mobile-product-image'>

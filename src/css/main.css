@@ -1841,7 +1841,7 @@ PRODUCT
 */
 
 .product-page-container {
-  padding-top: 100px;
+  border-top: 1px solid #000;
   display: flex;
   align-items: flex-start;
   width: 100%;
@@ -1863,8 +1863,6 @@ PRODUCT
   width: 33%;
   padding: 3vw;
   padding-left: 0;
-  position: sticky;
-  top: 0;
 }
 
 .product-tagline-container,
@@ -1898,6 +1896,10 @@ PRODUCT
   padding-left: 3vw;
   padding-top: 100px;
   padding-bottom: var(--spacing-sm);
+}
+
+.individual-product {
+  padding-bottom: var(--spacing-md);
 }
 
 .product-tag-container {
@@ -1992,6 +1994,7 @@ PRODUCTS MEDIA
 
   .product-page-container {
     flex-wrap: wrap;
+    padding-top: 3vw;
   }
 
   .product-right {
