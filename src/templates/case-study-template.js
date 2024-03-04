@@ -4,9 +4,9 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import Content from '../components/content'
 import Layout from '../components/layout'
 import Seo from '../components/seo'
-import Explore from '../components/explore'
-import Related from '../components/related'
+import RelatedCarousel from '../components/relatedCarousel'
 import useWindowSize from '../utils/useWindowSize'
+import { Fade } from 'react-awesome-reveal'
 
 const CaseStudy = ({ data }) => {
   const {
@@ -17,17 +17,15 @@ const CaseStudy = ({ data }) => {
     content,
     headerText,
     awards,
-    slug,
     press,
     shopifyHandle,
+    related,
   } = data.contentfulCaseStudy
   const { width } = useWindowSize()
   const isMobile = width < 1111
 
   const primaryContent = [content[0]]
   const secondaryContent = content.slice(1)
-
-  const relatedTags = ['no tags']
 
   return (
     <Layout>
@@ -204,7 +202,14 @@ const CaseStudy = ({ data }) => {
           </div>
         )}
       </div>
-      <Related currentProjectSlug={slug} tags={relatedTags}></Related>
+      {related && (
+        <Fade triggerOnce>
+          <div className='related-projects'>
+            <h2>Explore More</h2>
+            <RelatedCarousel slideCount={3} data={related}></RelatedCarousel>
+          </div>
+        </Fade>
+      )}
     </Layout>
   )
 }
@@ -238,6 +243,18 @@ export const query = graphql`
       headerText {
         childMarkdownRemark {
           html
+        }
+      }
+      related {
+        id
+        slug
+        title
+        subtitle
+        tileImage {
+          image {
+            description
+            gatsbyImageData
+          }
         }
       }
       content {

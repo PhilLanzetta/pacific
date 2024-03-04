@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql, useStaticQuery, Link } from 'gatsby'
 import { RelatedProjectsFactory } from './relatedProjectsFactory'
-import { GatsbyImage } from 'gatsby-plugin-image'
 import RelatedCarousel from './relatedCarousel'
 
 const Related = ({ currentProjectSlug, tags }) => {

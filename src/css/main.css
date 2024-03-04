@@ -1320,6 +1320,7 @@ News
 .news-secondary-row {
   display: flex;
   justify-content: flex-end;
+  align-items: flex-start;
   padding: 0 3vw;
   opacity: 0;
   transition: all 600ms;
@@ -1351,6 +1352,10 @@ News
 }
 
 .news-expanded-text-text {
+  margin-bottom: var(--spacing-sm);
+}
+
+.news-expanded-text-text p {
   margin-bottom: var(--spacing-sm);
 }
 
@@ -1649,10 +1654,6 @@ About
   column-count: 3;
   gap: var(--spacing-sm);
   width: 75%;
-}
-
-.about-award {
-  font-style: italic;
 }
 
 .talks-lectures p {
