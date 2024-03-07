@@ -857,6 +857,7 @@ PROJECTS
   display: flex;
   padding: 3vw;
   border-bottom: 1px solid #000;
+  align-items: flex-start;
 }
 
 .listing-image {
@@ -1006,7 +1007,7 @@ PROJECTS MEDIA
 
   .project-listing-text-pub p:nth-last-of-type(2) {
     width: 100%;
-    padding-bottom: 80px;
+    padding-bottom: 60px;
   }
 
   .list-view-go {
@@ -1018,8 +1019,8 @@ PROJECTS MEDIA
 
   .listing-scope {
     list-style: none;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     font-size: calc(1rem - 2px);
   }
 }
