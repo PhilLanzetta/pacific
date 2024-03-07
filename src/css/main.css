@@ -835,12 +835,74 @@ PROJECTS
   padding-top: 3vw;
 }
 
+.list-projects-container {
+  border-top: 1px solid #000;
+}
+
 .project-tiles-container {
   padding: 3vw;
   padding-top: 0;
   display: flex;
   flex-wrap: wrap;
   gap: 3vw;
+}
+
+.project-list-container {
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-listing {
+  display: flex;
+  padding: 3vw;
+  border-bottom: 1px solid #000;
+}
+
+.listing-image {
+  width: 20%;
+}
+
+.project-listing-text,
+.project-listing-text-pub {
+  width: 80%;
+  display: flex;
+}
+
+.project-listing-text p {
+  width: 25%;
+  padding-right: 15px;
+}
+
+.project-listing-text-pub p {
+  width: 25%;
+  padding-right: 15px;
+}
+
+.project-listing-text-pub p:nth-of-type(2) {
+  width: 50%;
+}
+
+.list-view-go {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.listing-scope {
+  list-style: none;
+}
+
+.listing-scope li {
+  display: inline;
+}
+
+.listing-scope li::after {
+  content: ', ';
+}
+
+.listing-scope li:last-of-type::after {
+  content: '';
 }
 
 .featured-projects-heading {
@@ -923,6 +985,44 @@ PROJECTS
 PROJECTS MEDIA
 ==========
 */
+
+@media screen and (max-width: 750px) {
+  .listing-image {
+    width: 50%;
+  }
+
+  .project-listing-text,
+  .project-listing-text-pub {
+    width: 50%;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .project-listing-text p,
+  .project-listing-text-pub p {
+    width: 100%;
+    padding-right: 15px;
+  }
+
+  .project-listing-text-pub p:nth-last-of-type(2) {
+    width: 100%;
+    padding-bottom: 80px;
+  }
+
+  .list-view-go {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: calc(1rem - 4px);
+  }
+
+  .listing-scope {
+    list-style: none;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    font-size: calc(1rem - 2px);
+  }
+}
 
 @media screen and (max-width: 600px) {
   .project-tile {
@@ -1909,6 +2009,16 @@ PRODUCT
   flex-wrap: wrap;
   gap: var(--spacing-sm);
   margin-bottom: var(--spacing-md);
+}
+
+.view-button {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.view-button:hover {
+  opacity: 1;
 }
 
 .product-tile-image {
