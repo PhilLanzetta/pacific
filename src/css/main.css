@@ -860,6 +860,10 @@ PROJECTS
   align-items: flex-start;
 }
 
+.project-listing:hover .listing-image {
+  opacity: 1;
+}
+
 .listing-image {
   width: 20%;
 }
