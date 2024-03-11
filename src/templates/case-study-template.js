@@ -19,6 +19,7 @@ const CaseStudy = ({ data }) => {
     awards,
     press,
     shopifyHandle,
+    scope,
     related,
   } = data.contentfulCaseStudy
   const { width } = useWindowSize()
@@ -93,6 +94,18 @@ const CaseStudy = ({ data }) => {
                   <p>{location}</p>
                 </div>
               )}
+              {scope && (
+                <div>
+                  <p>
+                    <em>Services</em>
+                  </p>
+                  <p className='case-scope'>
+                    {scope.map((item, index) => (
+                      <span key={index}>{item}</span>
+                    ))}
+                  </p>
+                </div>
+              )}
               {awards && (
                 <div>
                   <p>
@@ -160,6 +173,18 @@ const CaseStudy = ({ data }) => {
                   <p>{location}</p>
                 </div>
               )}
+              {scope && (
+                <div>
+                  <p>
+                    <em>Services</em>
+                  </p>
+                  <p className='case-scope'>
+                    {scope.map((item, index) => (
+                      <span key={index}>{item}</span>
+                    ))}
+                  </p>
+                </div>
+              )}
               {awards && (
                 <div>
                   <p>
@@ -221,6 +246,7 @@ export const query = graphql`
       title
       year
       location
+      scope
       shopifyHandle
       client
       awards {

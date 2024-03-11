@@ -569,6 +569,14 @@ Case Study
   position: relative;
 }
 
+.case-scope span::after {
+  content: ", ";
+}
+
+.case-scope span:last-of-type::after {
+  content: "";
+}
+
 .case-study-left {
   position: absolute;
   width: calc(25% - 3vw);
