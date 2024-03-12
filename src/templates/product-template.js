@@ -80,7 +80,7 @@ const ProductPage = ({ location, data }) => {
           ) : (
             <h1 className='product-title'>{title}</h1>
           )}
-          {priceRangeV2.minVariantPrice.amount > 0 && (
+          {priceRangeV2.minVariantPrice.amount > 0 && totalInventory > 0 && (
             <p className='product-price'>
               ${priceRangeV2.minVariantPrice.amount}
             </p>
