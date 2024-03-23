@@ -604,6 +604,8 @@ Case Study
   border-radius: 100px;
   padding: 5px 20px;
   transition: var(--fast-transition);
+  justify-self: flex-start;
+  align-self: flex-start;
 }
 
 .case-study-purchase-button:hover {
