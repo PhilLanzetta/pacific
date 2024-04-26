@@ -61,18 +61,36 @@ const Studio = ({ data, location }) => {
                 triggerOnce={true}
                 key={project.id}
               >
-                <Link to={`/studio/${project.slug}`}>
-                  {project.tileImage && (
-                    <GatsbyImage
-                      image={project.tileImage.image.gatsbyImageData}
-                      alt={project.tileImage.image.description}
-                    ></GatsbyImage>
-                  )}
-                  <p className='project-tile-title'>
-                    <em>{project.title}</em>
-                  </p>
-                  <p>{project.subtitle}</p>
-                </Link>
+                {project.isComingSoon ? (
+                  <div>
+                    {project.tileImage && (
+                      <GatsbyImage
+                        image={project.tileImage.image.gatsbyImageData}
+                        alt={project.tileImage.image.description}
+                      ></GatsbyImage>
+                    )}
+                    <p className='project-tile-soon'>
+                      <em>Coming Soon</em>
+                    </p>
+                    <p>
+                      <em>{project.title}</em>
+                    </p>
+                    <p>{project.subtitle}</p>
+                  </div>
+                ) : (
+                  <Link to={`/studio/${project.slug}`}>
+                    {project.tileImage && (
+                      <GatsbyImage
+                        image={project.tileImage.image.gatsbyImageData}
+                        alt={project.tileImage.image.description}
+                      ></GatsbyImage>
+                    )}
+                    <p className='project-tile-title'>
+                      <em>{project.title}</em>
+                    </p>
+                    <p>{project.subtitle}</p>
+                  </Link>
+                )}
               </Fade>
             ))}
           </div>
@@ -81,36 +99,65 @@ const Studio = ({ data, location }) => {
           <div className='project-list-container'>
             {caseStudy.map((project) => (
               <Fade triggerOnce={true} key={project.id}>
-                <Link
-                  to={`/studio/${project.slug}`}
-                  className='project-listing'
-                >
-                  <div className='project-listing-text'>
-                    <p>{project.title}</p>
-                    <p>
-                      <em>{project.subtitle}</em>
-                    </p>
-                    <p>
-                      <ul className='listing-scope'>
-                        {project.scope?.map((item, index) => (
-                          <li key={index}>{item}</li>
-                        ))}
-                      </ul>
-                    </p>
-                    <p>
-                      <span className='list-view-go'>
-                        View Case Study <RiArrowRightLine></RiArrowRightLine>
-                      </span>
-                    </p>
+                {project.isComingSoon ? (
+                  <div className='project-listing'>
+                    <div 
+                    id="listing-soon" className='project-listing-text'>
+                      <p className='listing-soon'>{project.title}</p>
+                      <p className='listing-soon'>
+                        <em>{project.subtitle}</em>
+                      </p>
+                      <p className='listing-soon'>
+                        <ul className='listing-scope'>
+                          {project.scope?.map((item, index) => (
+                            <li key={index}>{item}</li>
+                          ))}
+                        </ul>
+                      </p>
+                      <p className='listing-soon'>
+                        <span className='list-view-go-soon'>Coming Soon</span>
+                      </p>
+                    </div>
+                    {project.tileImage && (
+                      <GatsbyImage
+                        image={project.tileImage.image.gatsbyImageData}
+                        alt={project.tileImage.image.description}
+                        className='listing-image'
+                      ></GatsbyImage>
+                    )}
                   </div>
-                  {project.tileImage && (
-                    <GatsbyImage
-                      image={project.tileImage.image.gatsbyImageData}
-                      alt={project.tileImage.image.description}
-                      className='listing-image'
-                    ></GatsbyImage>
-                  )}
-                </Link>
+                ) : (
+                  <Link
+                    to={`/studio/${project.slug}`}
+                    className='project-listing'
+                  >
+                    <div className='project-listing-text'>
+                      <p>{project.title}</p>
+                      <p>
+                        <em>{project.subtitle}</em>
+                      </p>
+                      <p>
+                        <ul className='listing-scope'>
+                          {project.scope?.map((item, index) => (
+                            <li key={index}>{item}</li>
+                          ))}
+                        </ul>
+                      </p>
+                      <p>
+                        <span className='list-view-go'>
+                          View Case Study <RiArrowRightLine></RiArrowRightLine>
+                        </span>
+                      </p>
+                    </div>
+                    {project.tileImage && (
+                      <GatsbyImage
+                        image={project.tileImage.image.gatsbyImageData}
+                        alt={project.tileImage.image.description}
+                        className='listing-image'
+                      ></GatsbyImage>
+                    )}
+                  </Link>
+                )}
               </Fade>
             ))}
           </div>
@@ -136,6 +183,7 @@ export const query = graphql`
         }
         slug
         isFeatured
+        isComingSoon
         scope
         subtitle
         title

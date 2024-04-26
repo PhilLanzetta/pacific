@@ -570,11 +570,11 @@ Case Study
 }
 
 .case-scope span::after {
-  content: ", ";
+  content: ', ';
 }
 
 .case-scope span:last-of-type::after {
-  content: "";
+  content: '';
 }
 
 .case-study-left {
@@ -913,6 +913,11 @@ PROJECTS
   gap: 5px;
 }
 
+.list-view-go-soon {
+  font-style: italic;
+  opacity: 0.6;
+}
+
 .listing-scope {
   list-style: none;
 }
@@ -942,6 +947,11 @@ PROJECTS
 
 .project-tile-title {
   margin-top: var(--spacing-xs);
+}
+
+.project-tile-soon {
+  margin-top: var(--spacing-xs);
+  opacity: 0.6;
 }
 
 .filter-container {
