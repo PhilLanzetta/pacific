@@ -2043,6 +2043,8 @@ PRODUCT
   flex-wrap: wrap;
   gap: var(--spacing-sm);
   margin-bottom: var(--spacing-md);
+  position: relative;
+  z-index: 1000;
 }
 
 .view-button {
