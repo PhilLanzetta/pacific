@@ -10,7 +10,7 @@ const Privacy = () => {
         <p>
           This Privacy Policy describes how www.pacificpacific.pub collects,
           uses, and discloses your Personal Information when you visit or make a
-          purchase from the Site.
+          purchase from the site.
         </p>{' '}
         <p>Collecting Personal Information</p>{' '}
         <p>
