@@ -284,12 +284,6 @@ export const query = graphql`
         }
       }
       content {
-        ... on ContentfulAudioModule {
-          audioId: id
-          audioDescription
-          audioUrl
-          title
-        }
         ... on ContentfulBodyText {
           bodyTextId: id
           columns

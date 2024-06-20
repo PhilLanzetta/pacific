@@ -1,6 +1,5 @@
 import React from 'react'
 import ImageModule from './imageModule'
-import AudioModule from './audioModule'
 import TextModule from './textModule'
 import VideoModule from './videoModule'
 
@@ -10,8 +9,6 @@ const Content = ({ content }) => {
       {content.map((item) => {
         if (item.imageId) {
           return <ImageModule key={item.imageId} content={item}></ImageModule>
-        } else if (item.audioId) {
-          return <AudioModule key={item.audioId} content={item}></AudioModule>
         } else if (item.bodyTextId) {
           return <TextModule key={item.bodyTextId} content={item}></TextModule>
         } else if (item.videoId) {
