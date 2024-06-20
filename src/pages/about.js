@@ -107,7 +107,7 @@ const About = ({ data }) => {
             __html: aboveTheFoldText.childMarkdownRemark.html,
           }}
         ></div>
-        <div>
+        {/* <div>
           <h2 className='about-section-title'>About</h2>
           <div
             dangerouslySetInnerHTML={{
@@ -124,7 +124,7 @@ const About = ({ data }) => {
             }}
             className='about-text'
           ></div>
-        </div>
+        </div> */}
         <div>
           <h2 className='about-section-title'>Services</h2>
           <div className='about-services'>
@@ -175,6 +175,57 @@ const About = ({ data }) => {
           ></ul>
         </div>
         <div className='about-section'>
+          <h2 className='about-studio-section-title'>Awards</h2>
+          <ul className='four-column-container'>
+            {awards.map((award, index) => (
+              <li key={index} className='about-award'>
+                {award}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className='about-section'>
+          <h2 className='about-studio-section-title'>Talks & Lectures</h2>
+          <div
+            className='four-column-container talks-lectures'
+            dangerouslySetInnerHTML={{
+              __html: talksLectures.childMarkdownRemark.html,
+            }}
+          ></div>
+        </div>
+        <div className='about-section'>
+          <h2 className='about-studio-section-title'>Collections</h2>
+          <div className='collections-container'>
+            <div className='collections-preface'>
+              Our design and publishing work is held in the following
+              collections
+            </div>
+            <ul className='collections-list'>
+              {collections.map((collection, index) => (
+                <li key={index}>{collection}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div className='about-section'>
+          <h2 className='about-studio-section-title'>Artists</h2>
+          <ul
+            className='four-column-container'
+            dangerouslySetInnerHTML={{
+              __html: artists.childMarkdownRemark.html.replace(
+                /href/g,
+                "target='_blank' rel='noreferrer' href"
+              ),
+            }}
+          ></ul>
+        </div>
+        <div className='about-section'>
+          <h2 className='about-section-title'>Press</h2>
+          <Link to='/press' className='press-link'>
+            <BsArrowRight></BsArrowRight>View our press page
+          </Link>
+        </div>
+        <div className='about-section'>
           <h2 className='about-section-title'>Founders</h2>
           <div className='founders-container'>
             <div className='founder'>
@@ -215,57 +266,6 @@ const About = ({ data }) => {
               </div>
             ))}
           </Slider>
-        </div>
-        <div className='about-section'>
-          <h2 className='about-studio-section-title'>Collections</h2>
-          <div className='collections-container'>
-            <div className='collections-preface'>
-              Our design and publishing work is held in the following
-              collections
-            </div>
-            <ul className='collections-list'>
-              {collections.map((collection, index) => (
-                <li key={index}>{collection}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <div className='about-section'>
-          <h2 className='about-studio-section-title'>Artists</h2>
-          <ul
-            className='four-column-container'
-            dangerouslySetInnerHTML={{
-              __html: artists.childMarkdownRemark.html.replace(
-                /href/g,
-                "target='_blank' rel='noreferrer' href"
-              ),
-            }}
-          ></ul>
-        </div>
-        <div className='about-section'>
-          <h2 className='about-studio-section-title'>Awards</h2>
-          <ul className='four-column-container'>
-            {awards.map((award, index) => (
-              <li key={index} className='about-award'>
-                {award}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className='about-section'>
-          <h2 className='about-studio-section-title'>Talks & Lectures</h2>
-          <div
-            className='four-column-container talks-lectures'
-            dangerouslySetInnerHTML={{
-              __html: talksLectures.childMarkdownRemark.html,
-            }}
-          ></div>
-        </div>
-        <div className='about-section'>
-          <h2 className='about-section-title'>Press</h2>
-          <Link to='/press' className='press-link'>
-            <BsArrowRight></BsArrowRight>View our press page
-          </Link>
         </div>
       </div>
     </Layout>

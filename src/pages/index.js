@@ -10,16 +10,16 @@ import NewsCarousel from '../components/newsCarousel'
 import ShopCarousel from '../components/shopCarousel'
 import { Fade } from 'react-awesome-reveal'
 
-const Index = ({ data }) => {
+const Index = ({ data, location }) => {
   const featuredProjects = data.contentfulHomePage.featuredProjects
   const featuredPublications = data.contentfulHomePage.featuredPublications
   const featuredEditorial = data.contentfulHomePage.featuredEditorial
   const featuredNews = data.contentfulHomePage.featuredNews
   const featuredProducts = data.allShopifyProduct.nodes
   return (
-    <Layout>
+    <Layout location={location}>
       <HomeHero></HomeHero>
-      <div className='home-about-preview'>
+      {/* <div className='home-about-preview'>
         <div className='home-about-preview-section'>
           <h2 className='home-about-headline'>
             <Fade triggerOnce>{data.contentfulHomePage.aboutHeadline}</Fade>
@@ -77,7 +77,7 @@ const Index = ({ data }) => {
           </Link>
           <NewsCarousel data={featuredNews} slideCount={3}></NewsCarousel>
         </Fade>
-      </div>
+      </div> */}
     </Layout>
   )
 }

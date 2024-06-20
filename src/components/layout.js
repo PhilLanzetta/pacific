@@ -7,7 +7,13 @@ const Layout = ({ children, location, setTags }) => {
     <>
       <Header location={location} setTags={setTags}></Header>
       <main>{children}</main>
-      <Footer></Footer>
+      {location ? (
+        location.pathname !== '/' ? (
+          <Footer></Footer>
+        ) : null
+      ) : (
+        <Footer></Footer>
+      )}
     </>
   )
 }
