@@ -596,6 +596,11 @@ Case Study
   margin-bottom: var(--spacing-md);
 }
 
+.case-study-left p,
+.case-study-left a {
+  font-size: calc(var(--font-sm-resp) - 4px);
+}
+
 .case-study-tag-container a::after {
   content: ', ';
 }
