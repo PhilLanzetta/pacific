@@ -37,7 +37,7 @@ const ProductTile = ({ product }) => {
               <p className='product-status'>
                 {inquire && 'Inquire'}
                 {forthcoming && 'Forthcoming'} {preSale && 'Pre-sale'}
-                {notStocked && 'Not Stocked'}
+                {notStocked && 'Sold Out'}
                 {!inquire &&
                   !forthcoming &&
                   !preSale &&
@@ -47,6 +47,12 @@ const ProductTile = ({ product }) => {
               </p>
             )}
           </div>
+          {totalInventory < 1 && notStocked && (
+            <div className='sold-out-sticker'>
+              Sold <br />
+              Out
+            </div>
+          )}
         </div>
         {tagline && (
           <div

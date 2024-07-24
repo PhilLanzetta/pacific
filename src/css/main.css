@@ -2079,6 +2079,20 @@ PRODUCT
   position: relative;
 }
 
+.sold-out-sticker {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: var(--font-xs-resp);
+  text-transform: uppercase;
+  color: #fff;
+  background: #000;
+  border-radius: 100%;
+  padding: 8px;
+  text-align: center;
+  font-family: var(--font-secondary);
+}
+
 .payment-info {
   position: absolute;
   bottom: 5px;
