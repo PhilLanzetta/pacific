@@ -37,7 +37,6 @@ const ProductTile = ({ product }) => {
               <p className='product-status'>
                 {inquire && 'Inquire'}
                 {forthcoming && 'Forthcoming'} {preSale && 'Pre-sale'}
-                {notStocked && 'Sold Out'}
                 {!inquire &&
                   !forthcoming &&
                   !preSale &&
