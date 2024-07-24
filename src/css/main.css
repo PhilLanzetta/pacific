@@ -2083,7 +2083,7 @@ PRODUCT
   position: absolute;
   top: 8px;
   right: 8px;
-  font-size: var(--font-xs-resp);
+  font-size: calc(var(--font-xs-resp) - 2px);
   text-transform: uppercase;
   color: #fff;
   background: #000;
