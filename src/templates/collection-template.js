@@ -31,15 +31,21 @@ const CollectionTemplate = ({ data, location }) => {
             {collection.title}
           </Link>
         ))}
-        {collections.map((collection) => (
-          <Link
-            key={collection.id}
-            to={`/collections/${collection.handle}`}
-            activeClassName='active-filter-button'
-          >
-            {collection.title}
-          </Link>
-        ))}
+        <Link to={`/collections/books`} activeClassName='active-filter-button'>
+          Books
+        </Link>
+        <Link
+          to={`/collections/library`}
+          activeClassName='active-filter-button'
+        >
+          Library
+        </Link>
+        <Link
+          to={`/collections/editions`}
+          activeClassName='active-filter-button'
+        >
+          Apparel
+        </Link>
       </div>
 
       <div className='product-tiles-container'>
