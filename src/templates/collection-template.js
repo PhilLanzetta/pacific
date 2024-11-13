@@ -34,12 +34,12 @@ const CollectionTemplate = ({ data, location }) => {
         <Link to={`/collections/books`} activeClassName='active-filter-button'>
           Books
         </Link>
-        <Link
+        {/* <Link
           to={`/collections/library`}
           activeClassName='active-filter-button'
         >
           Library
-        </Link>
+        </Link> */}
         <Link
           to={`/collections/editions`}
           activeClassName='active-filter-button'
