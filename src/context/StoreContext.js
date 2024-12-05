@@ -78,11 +78,6 @@ export const StoreProvider = ({ children }) => {
     initializeCheckout()
   }, [])
 
-  useEffect(() => {
-    if (cart) {
-      localStorage.setItem('cart', JSON.stringify(cart))
-    }
-  }, [cart])
 
   const addVariantToCart = async (product, variantIndex, quantity) => {
     setLoading(true)
