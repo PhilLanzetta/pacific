@@ -31,15 +31,7 @@ const isBrowser = typeof window !== `undefined`
 const localStorageKey = `shopify_checkout_id`
 
 export const StoreProvider = ({ children }) => {
-  const [cart, setCart] = useState(function () {
-    let savedCart = []
-    try {
-      savedCart = JSON.parse(localStorage.getItem('cart')) || []
-    } catch (error) {
-      savedCart = []
-    }
-    return savedCart
-  })
+  const [cart, setCart] = useState(defaultValues.cart)
   const [checkout, setCheckout] = useState(defaultValues.checkout)
   const [loading, setLoading] = useState(false)
 
