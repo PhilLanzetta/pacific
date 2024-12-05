@@ -41,6 +41,7 @@ export const StoreProvider = ({ children }) => {
     }
 
     setCheckout(checkout)
+    setCart(checkout.lineItems)
   }
 
   useEffect(() => {
@@ -69,7 +70,6 @@ export const StoreProvider = ({ children }) => {
 
     initializeCheckout()
   }, [])
-
 
   const addVariantToCart = async (product, variantIndex, quantity) => {
     setLoading(true)
