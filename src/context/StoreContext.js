@@ -31,7 +31,15 @@ const isBrowser = typeof window !== `undefined`
 const localStorageKey = `shopify_checkout_id`
 
 export const StoreProvider = ({ children }) => {
-  const [cart, setCart] = useState(defaultValues.cart)
+  const [cart, setCart] = useState(function () {
+    let savedCart = []
+    try {
+      savedCart = JSON.parse(localStorage.getItem('cart')) || []
+    } catch (error) {
+      savedCart = []
+    }
+    return savedCart
+  })
   const [checkout, setCheckout] = useState(defaultValues.checkout)
   const [loading, setLoading] = useState(false)
 
@@ -41,7 +49,6 @@ export const StoreProvider = ({ children }) => {
     }
 
     setCheckout(checkout)
-    setCart(checkout.lineItems)
   }
 
   useEffect(() => {
@@ -65,11 +72,18 @@ export const StoreProvider = ({ children }) => {
       } else {
         const newCheckout = await client.checkout.create()
         setCheckoutItem(newCheckout)
+        setCart([])
       }
     }
 
     initializeCheckout()
   }, [])
+
+  useEffect(() => {
+    if (cart) {
+      localStorage.setItem('cart', JSON.stringify(cart))
+    }
+  }, [cart])
 
   const addVariantToCart = async (product, variantIndex, quantity) => {
     setLoading(true)
